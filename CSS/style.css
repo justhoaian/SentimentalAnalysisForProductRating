@@ -1,0 +1,369 @@
+.container{
+    width:990px;
+    margin: auto;
+    /* background-color: #cc66cc; */
+}
+
+.header{
+    background-color:whitesmoke;
+    width: 990px;
+    height: 100px;
+    /* background: url("img/bg-header.jpg") repeat-x; */
+}
+
+.logo{
+    float: left;
+}
+/*sidebar*/
+.sidebar{
+    width: 235px;
+    height: 500px;
+    float: left;
+    /* background-color: #5D8EF0;*/
+}
+.sidebar dt{
+    text-align:center;
+    color:whitesmoke;
+    background: #020235;
+    padding: 20px;
+    font-weight:bold;
+    margin: 0;
+}
+
+#sidebar dl{
+	margin:0px;
+	padding: 0px;
+}
+
+.sidebar dl dd{
+    border-bottom:1px solid whitesmoke;
+    
+}
+
+.sidebar dl dd a{
+    color: rgb(3, 3, 3);
+    font-weight: bold;
+    padding: 3px 20px;
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar dl dd a:hover{
+    background: rgb(127, 195, 212);
+}
+
+/*Menu sidebar*/
+.menu {
+    margin: 0px;
+    padding: 0px;
+  }
+
+.menu {
+    margin: 0 0 1px 0;
+    list-style: none;
+    background-color:#d5dfdf;
+    color: rgb(14, 13, 13);
+    width: 225px;
+    height: 30px;
+    line-height: 25px;
+    padding-left: 10px;
+  }
+
+
+.content{
+    background-color: #fff;
+    width: 738px; /*đã fix lại content cho phù hợp với 990px của header*/
+    min-height: 644px;
+    float: left;
+    border: 1px solid #6688cc;
+    margin: 15px 0 5px 15px;
+}
+
+.footer{
+    /* background-color: #6633cc; */
+    clear:both;
+	background:#020235;
+	padding: 8px 0px 10px 0px;/*fix lại footer*/
+	text-align:center;
+	font-weight:bold;
+    color:#FFF;
+    width :990px;
+    border: 1px solid #020235;/*thêm thuộc tính mới*/
+}
+
+/*Slider*/
+
+.sliderboxHead{
+    background-color: #280a6d;
+    width: 990px;
+    height: 300px;
+    overflow: hidden;
+}
+
+#sliderbox{
+    position: relative;
+    width: 3960px; /*đã fix lại slider*/
+    animation-name: slideranimation;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+#sliderbox img{
+    float: left;
+}
+
+@keyframes slideranimation{ /*Đã fix lại slider*/
+    0%
+    {
+        left: 0px;
+    }
+    20%
+    {
+        left: 0px;
+    }
+    25%
+    {
+        left: -990px;
+    }
+    45%
+    {
+        left: -990px;
+    }
+    50%
+    {
+        left:-1980px;
+    }
+    70%
+    {
+        left: -1980px;
+    }
+    75%
+    {
+        left: -2970px;
+    }
+    95%
+    {
+        left: -2970px;
+    }
+    /* 100%
+    {
+        left: -3600px;
+    }
+    105%
+    {
+        left: -3600px;
+    } */
+    
+}
+/* ------------------BOX------------------- */
+.content h2{
+    font: bold 30px arial;
+    color: #ff0000;
+    padding-left: 20px;
+    margin-left: 190px; /*Đã fix lại magrin cho 2 dòng chữ sản phẩm bán chạy và mới nhất*/
+}
+
+.box{
+    margin:5px; 
+	float:left;
+	width:250px;
+    text-align:center;
+    padding-right: 60px;/*thuộc tính mới thêm vào */
+    padding-left: 30px;/*thuộc tính mới thêm vào */
+}
+
+.box:nth-child(even){/* định dạng cho các block chẵn */
+	border-top: 5px solid rgb(156, 211, 165);
+	margin-right: 15px;
+}
+
+.box:nth-child(odd){/* định dạng cho các block lẻ */
+	border-top: 5px solid rgb(119, 184, 219);
+	margin-left: 15px;
+} 
+
+.box img{
+	width: 230px;
+	height: 150px;
+}
+
+.pname{
+    font: bold 14px arial;
+    color: #F39;
+    margin-top: 5px;
+}
+
+.pprice{
+    font: bold 12px arial;
+    color: #f30;
+}
+
+.action{
+    font: italic bold 10px arial;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    color: #F96;
+    text-align: right;
+}
+/* Chi tiet cua san pham */
+
+#productDetails
+{
+	padding: 10px 10px 10px 10px;
+	min-height:220px;
+}
+
+#detailLeft
+{
+	/*float: left; /*thuộc tính này chưa được sử dụng nên bỏ cũng đc*/
+    margin-bottom: 10px;
+    display:inline-block;
+    position: relative;
+}
+
+#detailLeft img
+{
+	width: 200px;
+    height: 150px;
+    display: block;
+}
+
+#detailRight
+{
+	float:right;
+	width: 300px;
+	margin-left: 10px;
+    margin-bottom:10px;
+}
+
+
+#description
+{
+	clear:both;
+	font-style:italic;
+	font-size:12px;
+}
+
+.label
+{
+	width: 100px;
+	text-align:right;
+	font-size:13px;
+	display:inline-block;
+	margin-right:5px;
+}
+
+.data
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+}
+
+.productname
+{
+	font-size: 18px;
+	font-weight:bold;
+	color:#F69;
+}
+
+.price
+{
+	font-size: 18px;
+	font-weight:bold;
+	color:#F93;
+}
+
+.factory
+{
+	font-size: 16px;
+	font-weight:bold;
+	color:#3C6;
+}
+
+/* form tim kiem */
+
+.formSearch{
+    float: right;
+    margin: 0px 0px 40px 0px;
+}
+
+.formSearch button{
+    border-radius: 100%;
+    font-weight:bold;
+    font-family:"Palatino Linotype";
+    color: #34495e;
+}
+
+.header form{
+    margin: 0px 0px 0px 0px;
+    font-weight:bold;
+    font-family:"Palatino Linotype";
+    color: #34495e;
+}
+
+.header input{
+    border-radius: 5px;
+    font-weight:bold;
+    font-family:"Palatino Linotype";
+    color: #34495e;
+}
+/*form đăng nhập*/
+
+.formLogin{
+    float: right;
+}
+
+.frmLogin input{
+    border-radius: 5px;
+    font-weight:bold;
+    font-family:"Palatino Linotype";
+    color: #34495e;
+    
+}
+
+#accountId{
+    margin: 68px -290px 0px 0;
+    float: right;
+}
+
+/* ---------------------------------------- */
+.shoppingCart{
+    text-align: center;
+}
+
+#cartmanagement{
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+}
+
+#cartmanagement h1{
+    color: #F63;
+    font-weight: bold;
+}
+
+#cartmanagement table{
+    border: 1px solid #369;
+    width: 645px; /*Sửa lại kích thước của bảng cho phù hợp với content*/
+    padding: 0;
+    border-spacing: 0px;
+    text-align:left;
+    margin-left: 45px; /*thêm mới thuộc tính để fix bảng quản lý giỏ hàng*/
+}
+
+#cartmanagement table tr td, #cartmanagement table tr th{
+    border: 1px solid #369;
+    margin: 0;
+    padding: 5px;
+}
+
+#cartmanagement table tr th{
+    text-align: center;
+}
+
+#querybox{
+    float: left;
+    padding: 5px;
+    margin: 5px;
+    text-align: left;
+}
