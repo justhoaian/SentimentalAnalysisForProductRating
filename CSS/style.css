@@ -157,7 +157,7 @@
 }
 /* ------------------BOX------------------- */
 .content h2{
-    font: bold 30px arial;
+    font: 30px arial;
     color: #ff0000;
     padding-left: 20px;
     margin-left: 190px; /*Đã fix lại magrin cho 2 dòng chữ sản phẩm bán chạy và mới nhất*/
@@ -188,18 +188,18 @@
 }
 
 .pname{
-    font: bold 14px arial;
+    font: 14px arial;
     color: #F39;
     margin-top: 5px;
 }
 
 .pprice{
-    font: bold 12px arial;
+    font: 12px arial;
     color: #f30;
 }
 
 .action{
-    font: italic bold 10px arial;
+    font: italic 10px arial;
     margin-right: 30px;
     margin-bottom: 10px;
     color: #F96;
@@ -297,15 +297,15 @@
 
 .header form{
     margin: 0px 0px 0px 0px;
-    font-weight:bold;
-    font-family:"Palatino Linotype";
+    /* font-weight:bold; */
+    /* font-family:"Palatino Linotype"; */
     color: #34495e;
 }
 
 .header input{
     border-radius: 5px;
-    font-weight:bold;
-    font-family:"Palatino Linotype";
+    /* font-weight:bold; */
+    /* font-family:"Palatino Linotype"; */
     color: #34495e;
 }
 /*form đăng nhập*/
