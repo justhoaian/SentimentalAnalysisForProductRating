@@ -58,15 +58,14 @@
         <table>
             <tr style = "width: 100%">
                 <th>
-                    <img src="Image/logoMucBang.png" alt="image not found" class="logo">
-                    <img src="Image/youlikeit.png" alt="image not found" class="logo">
-                    <img src="Image/mucit.png" alt="image not found" class="logo">
+                    <img src="Image/MucBanglogo.png" alt="image not found" class="logo">
+                    <img src="Image/MucBangslogan.png" alt="image not found" class="logo">
                 </th>
 
                 <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
 
                 <th class ="w3-right-align">
-                    <th>Sign in: </th>
+                    <th>Sign in:  </th>
                     <th>
                         <th>
                             <input type="text" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=10>
@@ -89,49 +88,36 @@
 
         <!--Nav bar-->
         <div class="w3-container">
-            <div class="w3-bar w3-pale-red w3-border w3-padding">
-                <a href="#" class="w3-bar-item w3-button w3-mobile">Home</a>
-                <a href="#" class="w3-bar-item w3-button w3-mobile">Food</a>
-                <a href="#" class="w3-bar-item w3-button w3-mobile">Drinks</a>
+            <div class="w3-bar w3-pale-red w3-border w3-padding w3-round-large">
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</a>
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</a>
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
                 <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
                 <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
             </div>
         </div>
 
-        <div class="w3-content w3-section">
+        <div class="w3-content w3-section" style="width:100%;">
             <img class="mySlides " src="Image/food1.jpg" style="width:100%; height:100%;">
             <img class="mySlides " src="Image/drink1.jpg" style="width:100%; height:100%;">
+            <img class="mySlides " src="Image/food2.jpg" style="width:100%; height:100%;">
         </div>
 
 
         <hr>
         <div class="row" style="color: #FF1493">
             <div class="col-md-12 well" >
-              <h4><strong>About</strong></h4><br>
-              <p>This site provides a secured method for booking hotel rooms.</p>
-              <br>
-              <p>As we assure that customers’ personal information is only retained in database for hotel booking affairs only</p>
-              <br>
-              <p>The site serves as a convenient communication system between the hotel and those who seek for competitive price which goes along with high-quality infrastructure.</p>
-              <br>
-              <p>We wish you a pleasant time experiencing our service.</p>
-              
+                <h4><strong>About</strong></h4><br>
+                <p>MÚCBANG is a food and drinks destination rating website, developed by MÚCGANG.</p>
+                <p>The amusing destinations on this website are rated based on your comments.</p>
+                <p>This site serves as a communication system between those who seek for places to meet up and those who give feedbacks based on their experience.</p>
+                <br>
+                <h4><strong><p>For more information, please kindly contact MÚCGANG via:</p><strong><h4>
+                <p>Email: mucbang.bymucgang@gmail.com</p>
+                <p>Phone: +84 070 228 400</p>
+                <p>QR Code:
+                <img src="Image/qrcode.png" style="width:20%; height:20%;"></p>
             </div>  
-        </div>
-        <div class="row" style="color: #FF1493">
-            <div class="col-md-4 wellfix">
-              <h4><strong>For further information</strong></h4>
-              <h4><strong>please kindly contact us:</strong></h4>
-              <hr>
-              Tel : +0182555555<br>
-              Mail : QLT@gmail.com <br>
-            </div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4 wellfix">
-                <h4><strong>Developed By</strong></h4><hr>
-                <a href="#">Company QLT</a>
-
-            </div>
         </div>
     </div>
 
@@ -149,12 +135,12 @@
         myIndex++;
         if (myIndex > x.length) {myIndex = 1}    
         x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 3000); // Change image every 2 seconds
+        setTimeout(carousel, 3000); // Change image every 3 seconds
         }
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
 </body>
 
 </html>
