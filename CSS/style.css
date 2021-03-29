@@ -95,8 +95,8 @@
 
 .sliderboxHead{
     background-color: #280a6d;
-    width: 990px;
-    height: 300px;
+    width: 750px;
+    height: 422px;
     overflow: hidden;
 }
 
@@ -117,43 +117,42 @@
     {
         left: 0px;
     }
-    20%
+    15%
     {
         left: 0px;
     }
-    25%
+    20%
     {
-        left: -990px;
+        left: -750px;
     }
-    45%
+    35%
     {
-        left: -990px;
+        left: -750px;
     }
-    50%
+    40%
     {
-        left:-1980px;
+        left:-1500px;
     }
-    70%
+    55%
     {
-        left: -1980px;
+        left: -1500px;
+    }
+    60%
+    {
+        left: -2250px;
     }
     75%
     {
-        left: -2970px;
+        left: -2250px;
+    }
+    80%
+    {
+        left: -3000px;
     }
     95%
     {
-        left: -2970px;
+        left: -3000px;
     }
-    /* 100%
-    {
-        left: -3600px;
-    }
-    105%
-    {
-        left: -3600px;
-    } */
-    
 }
 /* ------------------BOX------------------- */
 .content h2{

@@ -55,35 +55,39 @@
 <body>  
     <div class="container">
         <!--Header box-->
-        <table>
-            <tr style = "width: 100%">
-                <th>
-                    <img src="Image/MucBanglogo.png" alt="image not found" class="logo">
-                    <img src="Image/MucBangslogan.png" alt="image not found" class="logo">
-                </th>
-
-                <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-
-                <th class ="w3-right-align">
-                    <th>Sign in:  </th>
+        <div class="container">
+            <table>
+                <tr style = "width: 100%">
                     <th>
+                        <img src="Image/MucBanglogo.png" alt="image not found" class="logo">
+                        <img src="Image/MucBangslogan.png" alt="image not found" class="logo">
+                    </th>
+
+                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+
+                    <th class ="w3-right-align">
+                        <th>Sign in:  </th>
                         <th>
-                            <input type="text" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=10>
+                            <th>
+                                <input type="text" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=10>
+                            </th>
+                        </th>
+
+                        <th>
+                            <th>
+                                <input type="password" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=10>
+                            </th>
                         </th>
                     </th>
 
+                    <th class="w3-right-align">&nbsp&nbsp&nbsp</th>
+                    
                     <th>
-                        <th>
-                            <input type="text" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=10>
-                        </th>
+                        <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Sign up</button>
                     </th>
-                </th>
-                
-                <th>
-                    <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Sign up</button>
-                </th>
-            </tr>
-        </table>
+                </tr>
+            </table>
+        </div>
 
 
         <!--Nav bar-->
@@ -97,17 +101,28 @@
             </div>
         </div>
 
+        <!-- Slider box -->
         <div class="w3-content w3-section" style="width:100%;">
             <img class="mySlides " src="Image/food1.jpg" style="width:100%; height:100%;">
             <img class="mySlides " src="Image/drink1.jpg" style="width:100%; height:100%;">
             <img class="mySlides " src="Image/food2.jpg" style="width:100%; height:100%;">
         </div>
 
+        <!-- <div class="sliderboxHead">
+            <div id="sliderbox" >
+                <img src="Image/food1.jpg" alt="image not found">
+                <img src="Image/drink1.jpg" alt="image not found">
+                <img src="Image/food2.jpg" alt="image not found">
+                <img src="Image/drink2.jpg" alt="image not found">
+                <img src="Image/food3.jpg" alt="image not found">
+            </div>
+        </div> -->
 
-        <hr>
+
+        
         <div class="row" style="color: #FF1493">
             <div class="col-md-12 well" >
-                <h4><strong>About</strong></h4><br>
+                <h4><strong></t>About</strong></h4><br>
                 <p>MÚCBANG is a food and drinks destination rating website, developed by MÚCGANG.</p>
                 <p>The amusing destinations on this website are rated based on your comments.</p>
                 <p>This site serves as a communication system between those who seek for places to meet up and those who give feedbacks based on their experience.</p>
