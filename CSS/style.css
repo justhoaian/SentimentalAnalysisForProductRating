@@ -5,7 +5,7 @@
 }
 
 .header{
-    background-color:whitesmoke;
+    /* background-color:whitesmoke; */
     width: 990px;
     height: 100px;
     /* background: url("img/bg-header.jpg") repeat-x; */
@@ -91,69 +91,6 @@
     border: 1px solid #020235;/*thêm thuộc tính mới*/
 }
 
-/*Slider*/
-
-.sliderboxHead{
-    background-color: #280a6d;
-    width: 750px;
-    height: 422px;
-    overflow: hidden;
-}
-
-#sliderbox{
-    position: relative;
-    width: 3960px; /*đã fix lại slider*/
-    animation-name: slideranimation;
-    animation-duration: 20s;
-    animation-iteration-count: infinite;
-}
-
-#sliderbox img{
-    float: left;
-}
-
-@keyframes slideranimation{ /*Đã fix lại slider*/
-    0%
-    {
-        left: 0px;
-    }
-    15%
-    {
-        left: 0px;
-    }
-    20%
-    {
-        left: -750px;
-    }
-    35%
-    {
-        left: -750px;
-    }
-    40%
-    {
-        left:-1500px;
-    }
-    55%
-    {
-        left: -1500px;
-    }
-    60%
-    {
-        left: -2250px;
-    }
-    75%
-    {
-        left: -2250px;
-    }
-    80%
-    {
-        left: -3000px;
-    }
-    95%
-    {
-        left: -3000px;
-    }
-}
 /* ------------------BOX------------------- */
 .content h2{
     font: 30px arial;

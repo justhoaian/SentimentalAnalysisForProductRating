@@ -19,19 +19,13 @@
     <style>
         .well
         {
-            background: rgba(0,0,0,0.7);
+            background: rgba(255, 255, 255 , 0.7);
             border: none;
     
         }
-        .wellfix
-        {
-            background: rgba(0,0,0,0.7);
-            border: none;
-            height: 150px;
-        }
 		body
 		{
-			background-image: url('Image/background1.jpg');
+			background-image: url('img/background1.jpg');
 			background-repeat: no-repeat;
 			background-attachment: fixed;
             background-size: 100% 100%;
@@ -41,14 +35,6 @@
 			font-size: 13px;
             color: #FF1493;
 		}
-        .pro_pic
-        {
-            border-radius: 50%;
-            height: 50px;
-            width: 50px;
-            margin-bottom: 15px;
-            margin-right: 15px;
-        }
     </style>
 </head>
 
@@ -59,8 +45,8 @@
             <table>
                 <tr style = "width: 100%">
                     <th>
-                        <img src="Image/MucBanglogo.png" alt="image not found" class="logo">
-                        <img src="Image/MucBangslogan.png" alt="image not found" class="logo">
+                        <img src="img/MucBanglogo.png" alt="image not found" class="logo">
+                        <img src="img/MucBangslogan.png" alt="image not found" class="logo">
                     </th>
 
                     <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
@@ -80,7 +66,7 @@
                         </th>
                     </th>
 
-                    <th class="w3-right-align">&nbsp&nbsp&nbsp</th>
+                    <th class="w3-right-align">&nbsp&nbsp&nbsp&nbsp</th>
                     
                     <th>
                         <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Sign up</button>
@@ -101,42 +87,34 @@
             </div>
         </div>
 
-        <!-- Slider box -->
+        <!-- Photo box -->
         <div class="w3-content w3-section" style="width:100%;">
-            <img class="mySlides " src="Image/food1.jpg" style="width:100%; height:100%;">
-            <img class="mySlides " src="Image/drink1.jpg" style="width:100%; height:100%;">
-            <img class="mySlides " src="Image/food2.jpg" style="width:100%; height:100%;">
+            <img class="mySlides " src="img/food1.jpg" style="width:100%; height:100%;">
+            <img class="mySlides " src="img/drink1.jpg" style="width:100%; height:100%;">
+            <img class="mySlides " src="img/food2.jpg" style="width:100%; height:100%;">
+            <img class="mySlides " src="img/drink2.jpg" style="width:100%; height:100%;">
+            <img class="mySlides " src="img/food3.jpg" style="width:100%; height:100%;">
         </div>
 
-        <!-- <div class="sliderboxHead">
-            <div id="sliderbox" >
-                <img src="Image/food1.jpg" alt="image not found">
-                <img src="Image/drink1.jpg" alt="image not found">
-                <img src="Image/food2.jpg" alt="image not found">
-                <img src="Image/drink2.jpg" alt="image not found">
-                <img src="Image/food3.jpg" alt="image not found">
-            </div>
-        </div> -->
-
-
-        
+        <!-- About us box -->
+        <hr>
         <div class="row" style="color: #FF1493">
             <div class="col-md-12 well" >
-                <h4><strong></t>About</strong></h4><br>
+                <h4><strong>About</strong></h4><br>
                 <p>MÚCBANG is a food and drinks destination rating website, developed by MÚCGANG.</p>
                 <p>The amusing destinations on this website are rated based on your comments.</p>
                 <p>This site serves as a communication system between those who seek for places to meet up and those who give feedbacks based on their experience.</p>
                 <br>
-                <h4><strong><p>For more information, please kindly contact MÚCGANG via:</p><strong><h4>
+                <h4><strong>For more information, please kindly contact MÚCGANG via:</strong></h4>
                 <p>Email: mucbang.bymucgang@gmail.com</p>
                 <p>Phone: +84 070 228 400</p>
-                <p>QR Code:
-                <img src="Image/qrcode.png" style="width:20%; height:20%;"></p>
+                <p>QR Code:</p>
+                <img src="img/qrcode.png" style="width:20%; height:20%;">
             </div>  
         </div>
     </div>
 
-
+    <!-- Photo box algorithm -->
     <script>
         var myIndex = 0;
         carousel();
@@ -154,8 +132,7 @@
         }
     </script>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
+    
 </body>
 
 </html>
