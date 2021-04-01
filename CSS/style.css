@@ -226,7 +226,7 @@
 
 .formSearch button{
     border-radius: 100%;
-    font-weight:bold;
+    /* font-weight:bold; */
     font-family:"Palatino Linotype";
     color: #34495e;
 }
@@ -252,7 +252,7 @@
 
 .frmLogin input{
     border-radius: 5px;
-    font-weight:bold;
+    /* font-weight:bold; */
     font-family:"Palatino Linotype";
     color: #34495e;
     

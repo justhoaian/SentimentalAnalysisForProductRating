@@ -1,0 +1,1 @@
+<th class ="w3-right-align"><button href="index.php?a=8" class="w3-bar-item w3-button w3-teal w3-mobile w3-border w3-right w3-round-large">Sign up</button></th>
