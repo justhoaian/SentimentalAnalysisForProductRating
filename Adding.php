@@ -1,6 +1,10 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html>
 <head>
+=======
+<div id = Adding>
+>>>>>>> Stashed changes
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
@@ -12,6 +16,11 @@
     <script src="JS/jquery.min.js"></script>
     <script src="JS/jquery.zoom.min.js"></script>
 <style>
+<<<<<<< Updated upstream
+=======
+
+/*Form style*/
+>>>>>>> Stashed changes
 *{
     box-sizing: border-box
 }
@@ -66,6 +75,7 @@ input[type=submit]:hover {
   top: 0;
   padding: 15px;
 } 
+<<<<<<< Updated upstream
 /*From index*/
 .well
 {
@@ -82,11 +92,25 @@ body
 {
   background-image: url('Image/background1.jpg');
   background-repeat: no-repeat;
+=======
+
+/*From index*/
+.well
+{
+  background: rgba(255, 255, 255 , 0.7);
+  border: none;
+}
+body
+{
+	background-image: url('img/background1.jpg');
+	background-repeat: no-repeat;
+>>>>>>> Stashed changes
   background-attachment: fixed;
   background-size: 100% 100%;
 }
 p
 {
+<<<<<<< Updated upstream
   font-size: 13px;
   color: #FF1493;
 }
@@ -153,6 +177,19 @@ p
                 <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
             </div>
         </div>
+=======
+	font-size: 13px;
+  color: #FF1493;
+}
+</style>
+</head>
+
+<body>  
+    <div class="container">
+
+        <!-- Header -->
+        <?php include ('modules/mAdminHeader.php'); ?>
+>>>>>>> Stashed changes
 
 <!--Adding form-->
 <br>
@@ -209,5 +246,10 @@ p
   </div>
   </form>
 </div>
+<<<<<<< Updated upstream
 </body>
 </html>
+=======
+
+
+>>>>>>> Stashed changes
