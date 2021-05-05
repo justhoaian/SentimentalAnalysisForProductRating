@@ -31,7 +31,11 @@
     <!--Nav bar-->
         <div class="w3-container">
             <div class="w3-bar w3-pale-red w3-border w3-padding w3-round-large">
+<<<<<<< Updated upstream
                 <a href="AdminHeader.php?a=11">
+=======
+                <a href="AdminIndex.php">
+>>>>>>> Stashed changes
                     <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</button>
                 <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</a>
                 <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
@@ -40,7 +44,12 @@
                         <div class = "w3-dropdown-content w3-bar-block w3-card-4">
                         <a href="Adding.php">
                             <button href="#" class="w3-bar-item w3-button">Adding</button>
+<<<<<<< Updated upstream
                         <a href="#" class="w3-bar-item w3-button">Deleting</a>
+=======
+                        <a href="Deleting.php">
+                            <button href="#" class="w3-bar-item w3-button">Deleting</button>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>

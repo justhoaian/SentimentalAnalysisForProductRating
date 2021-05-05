@@ -35,6 +35,7 @@
                     <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</button>
                 <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</a>
                 <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
+<<<<<<< Updated upstream
                     <div class = "w3-dropdown-hover">
                     <button class = "w3-bar-item w3-button w3-mobile w3-round-large">Admin</button>
                         <div class = "w3-dropdown-content w3-bar-block w3-card-4">
@@ -42,6 +43,8 @@
                             <button href="#" class="w3-bar-item w3-button">Adding</button>
                         </div>
                     </div>
+=======
+>>>>>>> Stashed changes
                 <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
                 <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
             </div>

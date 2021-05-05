@@ -1,7 +1,11 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html>
 <head>
+=======
+<div id = Adding>
+>>>>>>> Stashed changes
 =======
 <div id = Adding>
 >>>>>>> Stashed changes
@@ -16,6 +20,7 @@
     <script src="JS/jquery.min.js"></script>
     <script src="JS/jquery.zoom.min.js"></script>
 <style>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 =======
 
@@ -40,6 +45,32 @@ input[type=submit] {
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
+=======
+
+/*Form style*/
+*{
+    box-sizing: border-box
+}
+/*boxes*/
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 15px;
+  resize: vertical;
+}
+label {
+  margin: 12px 12px 20px 0px;
+  display: inline-block;
+  font-size: 20px;
+  color: #FF1493
+}
+/*submit*/
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 15px;
+>>>>>>> Stashed changes
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -66,6 +97,10 @@ input[type=submit]:hover {
 .heading{
   font-size: 100px;
   text-align: center;
+<<<<<<< Updated upstream
+=======
+  color: #FF1493
+>>>>>>> Stashed changes
 }
 .formcontainer{
   max-width: 600px;
@@ -75,6 +110,7 @@ input[type=submit]:hover {
   top: 0;
   padding: 15px;
 } 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 /*From index*/
 .well
@@ -93,6 +129,8 @@ body
   background-image: url('Image/background1.jpg');
   background-repeat: no-repeat;
 =======
+=======
+>>>>>>> Stashed changes
 
 /*From index*/
 .well
@@ -104,12 +142,16 @@ body
 {
 	background-image: url('img/background1.jpg');
 	background-repeat: no-repeat;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   background-attachment: fixed;
   background-size: 100% 100%;
 }
 p
 {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   font-size: 13px;
   color: #FF1493;
@@ -178,6 +220,8 @@ p
             </div>
         </div>
 =======
+=======
+>>>>>>> Stashed changes
 	font-size: 13px;
   color: #FF1493;
 }
@@ -189,12 +233,23 @@ p
 
         <!-- Header -->
         <?php include ('modules/mAdminHeader.php'); ?>
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 
 <!--Adding form-->
 <br>
 <div class = "heading">
 <h2><b>ADDING BEVERAGE</b></h2>
+=======
+
+<!--Adding form-->
+<br>
+                
+<!--Title-->
+<div class="w3-col w3-container w3-margin-top w3-round-large" style ="background-color: #ffdbe1">
+<div class = "heading">
+    <h1 class ="Adding-title">ADDING</h1>
+>>>>>>> Stashed changes
 </div>
 <div class="formcontainer">
   <form action="/action_page.php">
@@ -247,9 +302,15 @@ p
   </form>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 </body>
 </html>
 =======
+
+
+>>>>>>> Stashed changes
+=======
+</div>
 
 
 >>>>>>> Stashed changes
