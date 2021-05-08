@@ -29,8 +29,9 @@
             padding-top: 60px;
         }
 
-		body{
-			background-image: url('Image/background1.jpg');
+		body
+		{
+			background-image: url('img/background1.jpg');
 			background-repeat: no-repeat;
 			background-attachment: fixed;
             background-size: 100% 100%;
@@ -73,54 +74,7 @@
 </head>
 
 <body>  
-    <div class="container">
-        <!--Header box-->
-        <div class="container">
-            <table>
-                <tr style = "width: 100%">
-                    <th>
-                        <img src="Image/MucBanglogo.png" alt="image not found" class="logo">
-                        <img src="Image/MucBangslogan.png" alt="image not found" class="logo">
-                    </th>
-
-                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-
-                    <th class ="w3-right-align">
-                        <th>Sign in:  </th>
-                        <th>
-                            <th>
-                                <input type="text" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=10>
-                            </th>
-                        </th>
-
-                        <th>
-                            <th>
-                                <input type="password" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=10>
-                            </th>
-                        </th>
-                    </th>
-
-                    <th class="w3-right-align">&nbsp&nbsp&nbsp</th>
-                    
-                    <th>
-                        <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Sign up</button>
-                    </th>
-                </tr>
-            </table>
-        </div>
-
-
-        <!--Nav bar-->
-        <div class="w3-container">
-            <div class="w3-bar w3-pale-red w3-border w3-padding w3-round-large" id="navBar">
-                <a href="index.php" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</a>
-                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</a>
-                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
-                <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
-                <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
-            </div>
-        </div>
-    </div>
+    <?php include ('modules/mHeader.php'); ?>
 
     <div class="container" >
         <div class = "w3-container">
@@ -130,6 +84,14 @@
                     <a href="#" onclick="close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
                         <i class="fa fa-remove"></i>
                     </a>
+
+                    <h1 class="food-and-drink-title">FOODS</h1>
+                    <br>        
+                    <p style="text-align: center">We would like to provide you various options of places that satisfy even Gordon Ramsay in taste.</p>
+                    <p style="text-align: center">We hope that we could offer you the best place for your intent from hanging out to celebrating anniversary in the industry.</p>
+                </div>
+
+                <div class="w3-container">
 
                     <h1 class="food-and-drink-title">FOODS</h1>
                     <br>        
@@ -161,7 +123,7 @@
                 <div class="w3-margin-bottom w3-margin-top">
                     <div class="w3-half">
                         <div class="w3-half w3-display-container w3-hover-opacity" style="transition:0.5s;width:100%">
-                            <img src="Image\Food\D'Maris.jpg" alt="food" style="width:100%">
+                            <img src="img\Food\D'Maris.jpg" alt="food" style="width:100%">
                             <div class="w3-display-topleft w3-display-hover w3-large">
                                 <button type="button" class="w3-animate-opacity w3-btn w3-margin w3-round" style="left:65px; background-color: #ffdbe1" title="Like">
                                     <i class="fa fa-heart w3-text-pink"></i>
@@ -212,7 +174,7 @@
                                 <i class="fa fa-cutlery"></i>
                             </p>
                             <hr>
-                            <button class="w3-button w3-block w3-black w3-round-large">Rating</button>
+                            <button class="w3-button w3-block w3-black">Rating</button>
                         </div>
                     </div>
                 </div>
@@ -221,7 +183,7 @@
                 <div class="w3-margin-bottom w3-margin-top">
                     <div class="w3-half">
                         <div class="w3-half w3-display-container w3-hover-opacity" style="transition:0.5s;width:100%">
-                            <img src="Image\Food\D'Maris.jpg" alt="food" style="width:100%">
+                            <img src="img\Food\D'Maris.jpg" alt="food" style="width:100%">
                             <div class="w3-display-topleft w3-display-hover w3-large">
                                 <button type="button" class="w3-animate-opacity w3-btn w3-margin w3-round" style="left:65px; background-color: #ffdbe1" title="Like">
                                     <i class="fa fa-heart w3-text-pink"></i>
@@ -272,7 +234,7 @@
                                 <i class="fa fa-cutlery"></i>
                             </p>
                             <hr>
-                            <button class="w3-button w3-block w3-black w3-round-large">Rating</button>
+                            <button class="w3-button w3-block w3-black">Rating</button>
                         </div>
                     </div>
                 </div>
@@ -281,7 +243,7 @@
                 <div class="w3-margin-bottom w3-margin-top">
                     <div class="w3-half">
                         <div class="w3-half w3-display-container w3-hover-opacity" style="transition:0.5s;width:100%">
-                            <img src="Image\Food\D'Maris.jpg" alt="food" style="width:100%">
+                            <img src="img\Food\D'Maris.jpg" alt="food" style="width:100%">
                             <div class="w3-display-topleft w3-display-hover w3-large">
                                 <button type="button" class="w3-animate-opacity w3-btn w3-margin w3-round" style="left:65px; background-color: #ffdbe1" title="Like">
                                     <i class="fa fa-heart w3-text-pink"></i>
@@ -332,7 +294,7 @@
                                 <i class="fa fa-cutlery"></i>
                             </p>
                             <hr>
-                            <button class="w3-button w3-block w3-black w3-round-large">Rating</button>
+                            <button class="w3-button w3-block w3-black">Rating</button>
                         </div>
                     </div>
                 </div>
@@ -354,7 +316,7 @@
         }
     </script>
 
-    <script>
+    <!-- <script>
         window.onscroll = function() {
             stickyBar()
         };
@@ -369,6 +331,33 @@
                 navbar.classList.remove("sticky");
             }
         }
+    </script> -->
+
+    <script>
+    $(document).ready(function(){
+    // Add smooth scrolling to all links
+    $("a").on('click', function(event) {
+
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+
+        // Store hash
+        var hash = this.hash;
+
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 800, function(){
+    
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+        });
+        } // End if
+    });
+    });
     </script>
 
 </body>
