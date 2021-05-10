@@ -31,16 +31,18 @@
     <!--Nav bar-->
         <div class="w3-container">
             <div class="w3-bar w3-pale-red w3-border w3-padding w3-round-large">
-                <a href="AdminHeader.php?a=11">
-                    <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</button>
-                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</a>
+                <a href="AdminIndex.php">
+                    <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</button></a>
+                <a href="AdminFood.php">
+                    <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</button></a>
                 <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
                     <div class = "w3-dropdown-hover">
                     <button class = "w3-bar-item w3-button w3-mobile w3-round-large">Admin</button>
                         <div class = "w3-dropdown-content w3-bar-block w3-card-4">
                         <a href="Adding.php">
-                            <button href="#" class="w3-bar-item w3-button">Adding</button>
-                        <a href="#" class="w3-bar-item w3-button">Deleting</a>
+                            <button href="#" class="w3-bar-item w3-button">Adding</button></a>
+                        <a href="Deleting.php">
+                            <button href="#" class="w3-bar-item w3-button">Deleting</button></a>
                         </div>
                     </div>
                 <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>

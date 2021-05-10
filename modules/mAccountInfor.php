@@ -1,6 +1,6 @@
 <div id="accountId">
     <?php
-        echo "Hello, ".$_SESSION["fullname"]." | ";
+        echo "Hello, ".$_SESSION["user"]." | ";
     ?>
     <a href="index.php?a=11">
         <button>Logout</button>

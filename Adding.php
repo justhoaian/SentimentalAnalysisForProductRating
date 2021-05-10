@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
-<!DOCTYPE html>
-<html>
-<head>
-=======
 <div id = Adding>
->>>>>>> Stashed changes
+<head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
@@ -16,11 +11,8 @@
     <script src="JS/jquery.min.js"></script>
     <script src="JS/jquery.zoom.min.js"></script>
 <style>
-<<<<<<< Updated upstream
-=======
 
 /*Form style*/
->>>>>>> Stashed changes
 *{
     box-sizing: border-box
 }
@@ -35,6 +27,7 @@ label {
   padding: 5px 12px 7px 0;
   display: inline-block;
   font-size: 20px;
+  color: #FF1493;
 }
 input[type=submit] {
   background-color: #4CAF50;
@@ -59,13 +52,14 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 .row:after {
-  content: "";
+  
   display: table;
   clear: both;
 }
 .heading{
   font-size: 100px;
   text-align: center;
+  color: #FF1493;
 }
 .formcontainer{
   max-width: 600px;
@@ -75,24 +69,6 @@ input[type=submit]:hover {
   top: 0;
   padding: 15px;
 } 
-<<<<<<< Updated upstream
-/*From index*/
-.well
-{
-  background: rgba(0,0,0,0.7);
-  border: none;
-}
-.wellfix
-{
-  background: rgba(0,0,0,0.7);
-  border: none;
-  height: 150px;
-        }
-body
-{
-  background-image: url('Image/background1.jpg');
-  background-repeat: no-repeat;
-=======
 
 /*From index*/
 .well
@@ -104,13 +80,11 @@ body
 {
 	background-image: url('img/background1.jpg');
 	background-repeat: no-repeat;
->>>>>>> Stashed changes
   background-attachment: fixed;
   background-size: 100% 100%;
 }
 p
 {
-<<<<<<< Updated upstream
   font-size: 13px;
   color: #FF1493;
 }
@@ -131,70 +105,13 @@ p
 }
 </style>
 </head>
-<body>
-<!--Header box-->
-<div class="container">
-            <table>
-                <tr style = "width: 100%">
-                    <th>
-                        <img src="Image/MucBanglogo.png" alt="image not found" class="logo">
-                        <img src="Image/MucBangslogan.png" alt="image not found" class="logo">
-                    </th>
-
-                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-
-                    <th class ="w3-right-align">
-                        <th>Hello&nbsp;</th>
-            
-                        <th>
-                            <th>Admin </th>
-                        </th>
-                    <th class="w3-right-align">&nbsp&nbsp</th>
-                    <th>
-                        <a href="index.php?a=11">
-                            <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Logout</button>
-                        </a>  
-                    </th>
-                </tr>
-            </table>
-        </div>
-<!--Nav bar-->
-<div class="w3-container">
-            <div class="w3-bar w3-pale-red w3-border w3-padding w3-round-large">
-                <a href="AdminHeader.php?a=11">
-                  <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</button>
-                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</a>
-                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
-                  <div class = "w3-dropdown-hover">
-                        <button class = "w3-bar-item w3-button w3-mobile w3-round-large">Admin</button>
-                        <div class = "w3-dropdown-content w3-bar-block w3-card-4">
-                        <a href="#" class="w3-bar-item w3-button">Adding</a>
-                        <a href="#" class="w3-bar-item w3-button">Deleting</a>
-                        <a href="#" class="w3-bar-item w3-button">Modify</a>
-                        </div>
-                    </div>
-                <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
-                <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
-            </div>
-        </div>
-=======
-	font-size: 13px;
-  color: #FF1493;
-}
-</style>
-</head>
-
 <body>  
-    <div class="container">
-
-        <!-- Header -->
-        <?php include ('modules/mAdminHeader.php'); ?>
->>>>>>> Stashed changes
+    <?php include ('modules/mAdminHeader.php'); ?>
 
 <!--Adding form-->
 <br>
 <div class = "heading">
-<h2><b>ADDING BEVERAGE</b></h2>
+<h1><b>ADDING BEVERAGE</b></h1>
 </div>
 <div class="formcontainer">
   <form action="/action_page.php">
@@ -230,6 +147,7 @@ p
       <label for="PNumber">Phone Number</label>
     </div>
     <div class="col-75">
+      <br>
       <input type="text" id="PNumber" name="Phonenumber">
     </div>
   </div>
@@ -244,12 +162,9 @@ p
   <div class="row">
     <input type="submit" value="Submit">
   </div>
+  
   </form>
 </div>
-<<<<<<< Updated upstream
 </body>
-</html>
-=======
 
 
->>>>>>> Stashed changes
