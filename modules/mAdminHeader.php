@@ -39,8 +39,15 @@
                     <div class = "w3-dropdown-hover">
                     <button class = "w3-bar-item w3-button w3-mobile w3-round-large">Admin</button>
                         <div class = "w3-dropdown-content w3-bar-block w3-card-4">
+<<<<<<< Updated upstream
                         <a href="Adding.php">
                             <button href="#" class="w3-bar-item w3-button">Adding</button></a>
+=======
+                        <a href="addingrestaurant.php">
+                            <button href="#" class="w3-bar-item w3-button">Adding Restaurant</button></a>
+                        <a href="addingcoffee.php">
+                            <button href="#" class="w3-bar-item w3-button">Adding Coffee Shop</button></a>
+>>>>>>> Stashed changes
                         <a href="Deleting.php">
                             <button href="#" class="w3-bar-item w3-button">Deleting</button></a>
                         </div>

@@ -1,24 +1,24 @@
+<?php include('loginfunctions.php') ?>
 <table width="380" class="formLogin">
     <form name="frmLogin" action="index.php?a=10" method="post" onsubmit="return CheckLogin()">
     <th>Sign in:</th>
         <th>
             <th>
-                <input name="txtUS" type="text" id="txtUS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=5>
+                <input name="username" type="text" id="txtUS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=5>
             </th>
                 
             <th>
-                <input name="txtPS" type="password"  id="txtPS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=5>
+                <input name="password" type="password"  id="txtPS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=5>
             </th>
         </th>
-        <input type="submit" class="w3-bar-item w3-button w3-pink w3-mobile w3-border w3-right w3-round-large" value="Go">
+        <input type="submit" class="w3-bar-item w3-button w3-pink w3-mobile w3-border w3-right w3-round-large" name="Login" value="Go">
     </form>
-
-
 </table>
+
 <script type="text/javascript">
     function CheckLogin()
     {
-        var control = document.getElementById("txtUS");
+        var control = document.getElementById("username");
         if(control.value =="")
         {
             control.focus();
@@ -26,7 +26,7 @@
             return false;
         }
 
-        control = document.getElementById("txtPS");
+        control = document.getElementById("password");
         if(control.value == "")
         {
             control.focus();
@@ -36,5 +36,4 @@
 
         return true;
     }
-
 </script>
