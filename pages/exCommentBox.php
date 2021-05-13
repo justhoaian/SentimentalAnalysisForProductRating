@@ -1,5 +1,14 @@
-<?php
-    
+<style>
+input[type=text] {
+  padding: 10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius:10px;
+  width:100%;
+}
+</style>
+
+<?php    
     include_once "lib/config.php";
     include_once ('lib/DataProvider.php');
     global $db_host, $db_username, $db_password, $db_name;
@@ -26,14 +35,12 @@
 ?>
 
 <form action="Rating.php" method="POST" onSubmit="return CheckComment()">
-    <div>             
+
+    <div class="container">             
         <tr>
-            <td><input type="text" name="txtComment" id="txtComment"></td>
+            <td><input type="text" name="txtComment" id="txtComment" placeholder="Leave your comment here"></td>
         </tr>
-        <tr> <!-- Báo lỗi tên comment k đc để trống -->
-            <td></td>
-            <td><strong><span class="error" id="errorComment"></span></strong></td>
-        </tr>
+        <input type="submit" name="submit" value="Upload" class="w3-right-align w3-round-large w3-pink">
     </div>
 </form>
 
@@ -42,16 +49,9 @@
         if(document.getElementById("txtComment").value == "")
         {
             document.getElementById("txtComment").focus();
-            // alert("User name is not null");
-            $('#errorComment').css({'display':'inline'});
-            $('#errorComment').html('Comment is not null');
+            alert("Comment cannot be null");
             return false;
         }
-        else
-        {
-            document.getElementById("txtComment").focus();
-            $('#errorComment').css({'display':'none'});
-            $('#errorComment').html('Comment is not null');
-
-        }
+        return true;
+    }
 </script>

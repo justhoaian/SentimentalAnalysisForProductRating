@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 13, 2021 lúc 12:37 PM
+-- Thời gian đã tạo: Th5 13, 2021 lúc 07:20 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -45,17 +45,10 @@ CREATE TABLE `account` (
 CREATE TABLE `comment` (
   `commentID` int(11) NOT NULL,
   `username` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `time` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `word` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `comment`
---
-
-INSERT INTO `comment` (`commentID`, `username`, `content`, `time`, `word`) VALUES
-(25, 'hehe', 'lưu đc ròi dzui ỉa cả nhà oy', '2021-05-13 10:34:26', '1');
 
 -- --------------------------------------------------------
 
@@ -245,7 +238,7 @@ ALTER TABLE `sentimentalword`
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT cho bảng `post`

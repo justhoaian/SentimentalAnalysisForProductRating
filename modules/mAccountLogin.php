@@ -4,11 +4,11 @@
     <th>Sign in:</th>
         <th>
             <th>
-                <input name="username" type="text" id="txtUS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=5>
+                <input name="username" type="text" id="txtUS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=8>
             </th>
                 
             <th>
-                <input name="password" type="password"  id="txtPS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=5>
+                <input name="password" type="password"  id="txtPS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=8>
             </th>
         </th>
         <input type="submit" class="w3-bar-item w3-button w3-pink w3-mobile w3-border w3-right w3-round-large" name="Login" value="Go">
