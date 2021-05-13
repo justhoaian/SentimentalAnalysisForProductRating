@@ -147,7 +147,7 @@
                             </div>
 
                             <div class="w3-display-middle w3-display-hover w3-large">
-                                <button href="#" type="button" class="w3-animate-opacity w3-btn w3-round w3-text-pink" style="background-color: #ffdbe1">Show Rating</button>
+                                <a href="Rating.php"><button type="button" class="w3-animate-opacity w3-btn w3-round w3-text-pink" style="background-color: #ffdbe1">Show Rating</button></a>
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                                 <i class="fa fa-cutlery"></i>
                             </p>
                             <hr>
-                            <button class="w3-button w3-block w3-black">Rating</button>
+                            <a href="Rating.php"><button class="w3-button w3-block w3-black">Rating</button></a>
                         </div>
                     </div>
                 </div>
@@ -207,7 +207,7 @@
                             </div>
 
                             <div class="w3-display-middle w3-display-hover w3-large">
-                                <button href="#" type="button" class="w3-animate-opacity w3-btn w3-round w3-text-pink" style="background-color: #ffdbe1">Show Rating</button>
+                                <a href="Rating.php"><button type="button" class="w3-animate-opacity w3-btn w3-round w3-text-pink" style="background-color: #ffdbe1">Show Rating</button></a>
                             </div>
                         </div>
                     </div>
@@ -234,7 +234,8 @@
                                 <i class="fa fa-cutlery"></i>
                             </p>
                             <hr>
-                            <button class="w3-button w3-block w3-black">Rating</button>
+                            
+                            <a href="Rating.php"><button class="w3-button w3-block w3-black">Rating</button></a>
                         </div>
                     </div>
                 </div>
@@ -267,7 +268,7 @@
                             </div>
 
                             <div class="w3-display-middle w3-display-hover w3-large">
-                                <button href="#" type="button" class="w3-animate-opacity w3-btn w3-round w3-text-pink" style="background-color: #ffdbe1">Show Rating</button>
+                                <a href="Rating.php"><button type="button" class="w3-animate-opacity w3-btn w3-round w3-text-pink" style="background-color: #ffdbe1">Show Rating</button></a>
                             </div>
                         </div>
                     </div>
@@ -294,7 +295,7 @@
                                 <i class="fa fa-cutlery"></i>
                             </p>
                             <hr>
-                            <button class="w3-button w3-block w3-black">Rating</button>
+                            <a href="Rating.php"><button class="w3-button w3-block w3-black">Rating</button></a>
                         </div>
                     </div>
                 </div>
