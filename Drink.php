@@ -86,7 +86,7 @@
                         <a href="#" onclick="close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
                             <i class="fa fa-remove"></i>
                         </a>
-                        <h1 class="food-and-drink-title">FOODS</h1>
+                        <h1 class="food-and-drink-title">DRINKS</h1>
                         <br>        
                         <p style="text-align: center">We would like to provide you various options of places that satisfy even Gordon Ramsay in taste.</p>
                         <p style="text-align: center">We hope that we could offer you the best place for your intent from hanging out to celebrating anniversary in the industry.</p>
@@ -122,7 +122,7 @@
 
             <!--Page Content-->
 
-            <!--Restaurant-->
+            <!--Coffee & Tea-->
             <div class="w3-col m9 w3-container w3-row-padding w3-margin-top w3-round-large" style ="background-color: #ffdbe1">
                 <?php
                     include_once "lib/config.php";
@@ -137,24 +137,24 @@
                     //Take data from database and show on the web
 
                     //Restaurant
-                    $sqlRestaurant = "SELECT * FROM food, foodstalltype 
-                    WHERE foodStallType = 'Restaurant'
-                    AND food.postID = foodstalltype.postID";
-                    $resultRestaurant = mysqli_query($connection, $sqlRestaurant);
-                    if ($resultRestaurant){
-                        if(mysqli_num_rows($resultRestaurant) > 0){
-                            while($row = mysqli_fetch_array($resultRestaurant)){
+                    $sqlCoffeeTea = "SELECT * FROM drink, drinkstalltype 
+                    WHERE drinkStallType = 'Coffee & Tea'
+                    AND drink.postID = drinkstalltype.postID";
+                    $resultCoffeeTea = mysqli_query($connection, $sqlCoffeeTea);
+                    if ($resultCoffeeTea){
+                        if(mysqli_num_rows($resultCoffeeTea) > 0){
+                            while($row = mysqli_fetch_array($resultCoffeeTea)){
                                 echo"
                                 <!--Title-->
-                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='restaurant' style ='background-color: #ffd1dc'>
-                                            <h3 class ='title'>".$row['foodStallType']."</h3>
+                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='Coffee & Tea' style ='background-color: #ffd1dc'>
+                                            <h3 class ='title'>".$row['drinkStallType']."</h3>
                                     </div>
                             
                                     <!--Image-->
                                     <div class='row w3-margin-bottom w3-margin-top'>
                                         <div class='w3-half'>
                                             <div class='w3-half w3-display-container w3-hover-opacity' style='transition:0.5s;width:100%'>
-                                                <img src=".$row['image']." alt='food' style='width:100%'>
+                                                <img src=".$row['image']." alt='drink' style='width:100%'>
                                                 <div class='w3-display-topleft w3-display-hover w3-large'>
                                                     <button type='button' class='w3-animate-opacity w3-btn w3-margin w3-round' style='left:65px; background-color: #ffdbe1' title='Like'>
                                                         <i class='fa fa-heart w3-text-pink'></i>
@@ -181,10 +181,10 @@
                                     <!--Information Description-->
                                         <div class='w3-half w3-margin-bottom' style ='background-color: #ffdbe1'>
                                             <div class='w3-container'>
-                                                <h3>".$row['foodName']."</h3>
+                                                <h3>".$row['drinkName']."</h3>
                                                 <br>
                                                 <h6 class='w3-opacity'>$".$row['priceRange']."</h6>
-                                                <p>".$row['foodStallType']."</p>
+                                                <p>".$row['drinkStallType']."</p>
                                                 <p class='w3-large'></i>
                                                     <i class='fa fa-phone'></i> 
                                                     <i class='fa fa-wifi'></i> 
@@ -201,25 +201,25 @@
                         }
                     }
 
-                    //Buffet
-                    $sqlBuffet = "SELECT * FROM food, foodstalltype 
-                    WHERE foodStallType = 'Buffet' 
-                    AND food.postID = foodstalltype.postID";
-                    $resultBuffet = mysqli_query($connection, $sqlBuffet);
-                    if ($resultBuffet){
-                        if(mysqli_num_rows($resultBuffet) > 0){
-                            while($row = mysqli_fetch_array($resultBuffet)){
+                    //Take Away
+                    $sqlTakeAway = "SELECT * FROM drink, drinkstalltype 
+                    WHERE drinkStallType = 'Take Away' 
+                    AND drink.postID = drinkstalltype.postID";
+                    $resultTakeAway = mysqli_query($connection, $sqlTakeAway);
+                    if ($resultTakeAway){
+                        if(mysqli_num_rows($resultTakeAway) > 0){
+                            while($row = mysqli_fetch_array($resultTakeAway)){
                                 echo"
                                 <!--Title-->
                                 <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='buffet' style ='background-color: #ffd1dc'>
-                                            <h3 class ='title'>".$row['foodStallType']."</h3>
+                                            <h3 class ='title'>".$row['drinkStallType']."</h3>
                                     </div>
                             
                                     <!--Image-->
                                     <div class='row w3-margin-bottom w3-margin-top'>
                                         <div class='w3-half'>
                                             <div class='w3-half w3-display-container w3-hover-opacity' style='transition:0.5s;width:100%'>
-                                                <img src=".$row['image']." alt='food' style='width:100%'>
+                                                <img src=".$row['image']." alt='drink' style='width:100%'>
                                                 <div class='w3-display-topleft w3-display-hover w3-large'>
                                                     <button type='button' class='w3-animate-opacity w3-btn w3-margin w3-round' style='left:65px; background-color: #ffdbe1' title='Like'>
                                                         <i class='fa fa-heart w3-text-pink'></i>
@@ -246,10 +246,10 @@
                                     <!--Information Description-->
                                         <div class='w3-half w3-margin-bottom' style ='background-color: #ffdbe1'>
                                             <div class='w3-container'>
-                                                <h3>".$row['foodName']."</h3>
+                                                <h3>".$row['drinkName']."</h3>
                                                 <br>
                                                 <h6 class='w3-opacity'>$".$row['priceRange']."</h6>
-                                                <p>".$row['foodStallType']."</p>
+                                                <p>".$row['drinkStallType']."</p>
                                                 <p class='w3-large'></i>
                                                     <i class='fa fa-phone'></i> 
                                                     <i class='fa fa-wifi'></i> 
@@ -266,25 +266,25 @@
                         }
                     }
 
-                    //Street Food
-                    $sqlStreetFood = "SELECT * FROM food, foodstalltype 
-                    WHERE foodStallType = 'streetfood' 
-                    AND food.postID = foodstalltype.postID";
-                    $resultStreetFood = mysqli_query($connection, $sqlStreetFood);
-                    if ($resultStreetFood){
-                        if(mysqli_num_rows($resultStreetFood) > 0){
-                            while($row = mysqli_fetch_array($resultStreetFood)){
+                    //Lounge
+                    $sqlLounge = "SELECT * FROM drink, drinkstalltype 
+                    WHERE drinkStallType = 'Lounge' 
+                    AND drink.postID = drinkstalltype.postID";
+                    $resultLounge = mysqli_query($connection, $sqlLounge);
+                    if ($resultLounge){
+                        if(mysqli_num_rows($resultLounge) > 0){
+                            while($row = mysqli_fetch_array($resultLounge)){
                                 echo"
                                 <!--Title-->
                                 <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='streetFood' style ='background-color: #ffd1dc'>
-                                            <h3 class ='title'>".$row['foodStallType']."</h3>
+                                            <h3 class ='title'>".$row['drinkStallType']."</h3>
                                     </div>
                             
                                     <!--Image-->
                                     <div class='row w3-margin-bottom w3-margin-top'>
                                         <div class='w3-half'>
                                             <div class='w3-half w3-display-container w3-hover-opacity' style='transition:0.5s;width:100%'>
-                                                <img src=".$row['image']." alt='food' style='width:100%'>
+                                                <img src=".$row['image']." alt='drink' style='width:100%'>
                                                 <div class='w3-display-topleft w3-display-hover w3-large'>
                                                     <button type='button' class='w3-animate-opacity w3-btn w3-margin w3-round' style='left:65px; background-color: #ffdbe1' title='Like'>
                                                         <i class='fa fa-heart w3-text-pink'></i>
@@ -311,10 +311,10 @@
                                     <!--Information Description-->
                                         <div class='w3-half w3-margin-bottom' style ='background-color: #ffdbe1'>
                                             <div class='w3-container'>
-                                                <h3>".$row['foodName']."</h3>
+                                                <h3>".$row['drinkName']."</h3>
                                                 <br>
                                                 <h6 class='w3-opacity'>$".$row['priceRange']."</h6>
-                                                <p>".$row['foodStallType']."</p>
+                                                <p>".$row['drinkStallType']."</p>
                                                 <p class='w3-large'></i>
                                                     <i class='fa fa-phone'></i> 
                                                     <i class='fa fa-wifi'></i> 
