@@ -268,7 +268,7 @@
 
                     //Street Food
                     $sqlStreetFood = "SELECT * FROM food, foodstalltype 
-                    WHERE foodStallType = 'streetfood' 
+                    WHERE foodStallType = 'Street Food' 
                     AND food.postID = foodstalltype.postID";
                     $resultStreetFood = mysqli_query($connection, $sqlStreetFood);
                     if ($resultStreetFood){

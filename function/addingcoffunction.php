@@ -1,5 +1,6 @@
 <?php
     include_once "lib/config.php";
+    include_once ('lib/DataProvider.php');
     global $db_host, $db_username, $db_password, $db_name;
 
     $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
@@ -20,13 +21,10 @@
                     values ('$postID', '$rating', '$address', '$image', '$workingtime', '$pricerange', '$phonenumber', '$name')";
             if ($connection->query($sql) === TRUE) 
             {
-                echo "Record updated successfully";
-            } 
-            else 
-            {
-                echo "Error updating record: " . $connection -> error;
             }
             $connection ->close();
+
+            DataProvider::ChangeURL("index.php");
         }
     }
 ?>

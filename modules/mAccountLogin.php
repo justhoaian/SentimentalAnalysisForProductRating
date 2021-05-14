@@ -1,14 +1,13 @@
-<?php include('loginfunctions.php') ?>
 <table width="380" class="formLogin">
     <form name="frmLogin" action="index.php?a=10" method="post" onsubmit="return CheckLogin()">
     <th>Sign in:</th>
         <th>
             <th>
-                <input name="username" type="text" id="txtUS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=8>
+                <input name="username" type="text" id="username" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Username" size=8>
             </th>
                 
             <th>
-                <input name="password" type="password"  id="txtPS" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=8>
+                <input name="password" type="password"  id="password" class="w3-bar-item w3-input w3-mobile w3-border w3-round-large" placeholder="Password" size=8>
             </th>
         </th>
         <input type="submit" class="w3-bar-item w3-button w3-pink w3-mobile w3-border w3-right w3-round-large" name="Login" value="Go">

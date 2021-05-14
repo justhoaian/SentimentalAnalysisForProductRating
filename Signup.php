@@ -1,4 +1,4 @@
-<?php include('loginfunctions.php') ?>
+<!-- <?php include('function/loginfunction.php') ?> -->
 <div id = "Signup">
 <head>
 <meta charset="utf-8">
@@ -59,7 +59,7 @@
     }
     input[name = Register] 
     {
-        background-color: #4CAF50;
+        background-color: teal;
         color: white;
         padding: 12px 20px;
         border: none;
@@ -69,7 +69,7 @@
     }
     input[type=submit]:hover 
     {
-        background-color: #45a049;
+        background-color: pink;
     }
     .col-25 
     {
@@ -114,9 +114,32 @@
     } 
 </style>
 </head>
+<?php
+    
+    include_once "lib/config.php";
+    include_once "lib/DataProvider.php";
+    global $db_host, $db_username, $db_password, $db_name;
 
+    $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+    /* check connection */
+    if ($connection->connect_error) {      
+        die("Failed to connect: " . $connection->connect_error);
+    }
+           
+    if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["email"])){
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+            $name = $_POST["name"];
+            $email = $_POST["email"];
 
-
+            $sql = "insert into account (username, password, name, email) 
+            values ('$username','$password','$name','$email')";
+            if($connection->query($sql) == true)
+            {
+            }
+            DataProvider::ChangeURL("index.php");
+        }
+?>
 <body>  
 <div class="container">
     <!--Header box-->
@@ -142,17 +165,16 @@
     <!--Signup form-->
 <br>
 <div class = "heading">
-<h1><b>SIGNUP</b></h1>
+<h1><b>SIGN UP</b></h1>
 </div>
 <div class="formcontainer">
   <form method = "POST", action="Signup.php">
-  <?php echo display_error(); ?>
   <div class="row">
     <div class="col-25">
       <label for="username">Username</label>
     </div>
     <div class="col-75">
-      <input type="text" id="username" name="username" value = "<?php echo $username;?>">
+      <input type="text" id="username" name="username">
     </div>
   </div>
   <div class="row">
@@ -176,7 +198,7 @@
       <label for="email">Email</label>
     </div>
     <div class="col-75">
-      <input type="text" id="email" name="email" value = "<?php echo $email;?>">
+      <input type="text" id="email" name="email">
     </div>
   </div>
   <div class="row">
@@ -184,6 +206,4 @@
   </div>
   </form>
 </div>
-</body>
-
 </body>

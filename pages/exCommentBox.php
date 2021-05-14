@@ -24,8 +24,15 @@ input[type=text] {
             $content = $_POST["txtComment"];
 
             $sql = "insert into comment (commentID,username,content,time,word) 
-            values (NULL,'hehe','$content',DEFAULT,'1')";
+            values (NULL,'hehe','$content',DEFAULT,$word)";
+
+            // $sql = "insert into comment (commentID,username,content,time,word) 
+            // values (NULL,'hehe','$content',DEFAULT,'1')";
             
+            if($connection->query($word) == true)
+            {
+            }
+
             if($connection->query($sql) == true)
             {
             }

@@ -8,21 +8,22 @@
                     <img src="img/MucBangslogan.png" alt="image not found" class="logo">
                 </th>
 
-                <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+                <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
 
                 <th class ="w3-right-align">
-                    <?php
-                    if(isset($_SESSION['account_id']))
-                    {
-                        include ("modules/mAccountInfor.php");
-                    }
-                    else
-                    {
-                        include ("modules/mAccountLogin.php");
-                        include ("modules/mAccountSignUp.php");
-                    }
-                    ?>
-                </th>
+                        <th>Hello&nbsp;</th>
+            
+                        <th>
+                            <th>Admin </th>
+                        </th>
+                    <th class="w3-right-align">&nbsp&nbsp&nbsp</th>
+                    <th>
+                        <a href="index.php?a=11">
+                            <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Logout</button>
+                        </a>  
+                    </th>
             </tr>
         </table>
     </div>
@@ -39,15 +40,10 @@
                     <div class = "w3-dropdown-hover">
                     <button class = "w3-bar-item w3-button w3-mobile w3-round-large">Admin</button>
                         <div class = "w3-dropdown-content w3-bar-block w3-card-4">
-<<<<<<< Updated upstream
-                        <a href="Adding.php">
-                            <button href="#" class="w3-bar-item w3-button">Adding</button></a>
-=======
-                        <a href="addingrestaurant.php">
+                        <a href="Addingrestaurant.php">
                             <button href="#" class="w3-bar-item w3-button">Adding Restaurant</button></a>
-                        <a href="addingcoffee.php">
+                        <a href="Addingcoffee.php">
                             <button href="#" class="w3-bar-item w3-button">Adding Coffee Shop</button></a>
->>>>>>> Stashed changes
                         <a href="Deleting.php">
                             <button href="#" class="w3-bar-item w3-button">Deleting</button></a>
                         </div>
