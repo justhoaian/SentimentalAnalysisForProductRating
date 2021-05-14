@@ -1,3 +1,4 @@
+<?php include('deletefunction.php') ?>
 <div id = "Deleting">
 <head>
     <meta charset="utf-8">
@@ -171,12 +172,6 @@
                     <div class="w3-container">
                         <div id = button>
                             <button onclick = "myFunction()" class="btn"><i class="fa fa-times"></i></button>
-            
-                            <script>
-                                function myFunction() {
-                                alert("Delete this post?");
-                                }
-                            </script>
                         </div>
                         <h3>D'Maris</h3>
                             <h6 class="w3-opacity">$ From 199k</h6>
@@ -240,12 +235,6 @@
                     <div class="w3-container">
                         <div id = button>
                             <button onclick = "myFunction()" class="btn"><i class="fa fa-times"></i></button>
-            
-                            <script>
-                                function myFunction() {
-                                alert("Delete this post?");
-                                }
-                            </script>
                         </div>
                         <h3>D'Maris</h3>
                             <h6 class="w3-opacity">$ From 199k</h6>
@@ -308,13 +297,10 @@
                  <div class="w3-half w3-margin-bottom" style ="background-color: #ffdbe1">
                     <div class="w3-container">
                         <div id = button>
-                            <button onclick = "myFunction()" class="btn"><i class="fa fa-times"></i></button>
-            
-                            <script>
-                                function myFunction() {
-                                alert("Delete this post?");
-                                }
-                            </script>
+                            <button onclick = "myFunction()" class="btn">
+                                <i class="fa fa-times">
+                                </i>
+                            </button>
                         </div>
                         <h3>D'Maris</h3>
                             <h6 class="w3-opacity">$ From 199k</h6>
@@ -353,6 +339,10 @@
         function close() {
             document.getElementById("mySidebar").style.display = "none";
             document.getElementById("myOverlay").style.display = "none";
+        }
+
+        function myFunction() {
+            confirm ("Delete this post?");
         }
     </script>
 

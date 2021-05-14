@@ -1,4 +1,4 @@
-<?php include('addingfunction.php') ?>
+<?php include('function/addingrestfunction.php') ?>
 
 <div id = Adding>
 <head>
@@ -54,7 +54,6 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 .row:after {
-  
   display: table;
   clear: both;
 }
@@ -116,7 +115,7 @@ p
 <h1><b>ADDING RESTAURANT</b></h1>
 </div>
 <div class="formcontainer">
-  <form action="AdminFood.php">
+  <form method = "post" action="addingrestaurant.php" onSubmit = "return CheckFunction()">
   <div class="row">
     <div class="col-25">
       <label for="name">Name of beverage</label>
@@ -124,6 +123,13 @@ p
     <div class="col-75">
       <input type="text" id="name" name="name" style="height: 60px">
     </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="image">Upload image</label>
+    </div>
+    <br>
+    <input type="file" name="image" id="image">
   </div>
   <div class="row">
     <div class="col-25">
@@ -164,7 +170,7 @@ p
 </div>
 
 <script type="text/javascript">
-    function CheckLogin()
+    function CheckFunction()
     {
         var control = document.getElementById("name");
         if(control.value =="")

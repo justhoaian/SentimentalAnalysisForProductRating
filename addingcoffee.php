@@ -1,3 +1,5 @@
+<?php include('addingcoffunction.php') ?>
+
 <div id = Adding>
 <head>
 <meta charset="utf-8">
@@ -52,7 +54,6 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 .row:after {
-  
   display: table;
   clear: both;
 }
@@ -111,17 +112,24 @@ p
 <!--Adding form-->
 <br>
 <div class = "heading">
-<h1><b>ADDING Coffee Shop</b></h1>
+<h1><b>ADDING COFFEE SHOP</b></h1>
 </div>
 <div class="formcontainer">
-  <form action="/action_page.php">
+  <form method = "post" action="addingcoffee.php">
   <div class="row">
     <div class="col-25">
-      <label for="name">Name of beverage</label>
+      <label for="name">Name of coffee shop</label>
     </div>
     <div class="col-75">
       <input type="text" id="name" name="name" style="height: 60px">
     </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="image">Upload image</label>
+    </div>
+    <br>
+    <input type="file" name="image" id="image">
   </div>
   <div class="row">
     <div class="col-25">
@@ -155,21 +163,57 @@ p
       <input type="text" id="phonenumber" name="phonenumber" style="height: 60px">
     </div>
   </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="BDescript">Brief Description</label>
-    </div>
-    <div class="col-75">
-      <textarea id="BDescript" name="BriefDescription" placeholder="Write something.." style="height:100px"></textarea>
-    </div>
-  </div>
   <br>
   <div class="row">
     <input type="submit" value="Submit">
-  
   </form>
 </div>
 
+<script type="text/javascript">
+    function CheckLogin()
+    {
+        var control = document.getElementById("name");
+        if(control.value =="")
+        {
+            control.focus();
+            alert("Name can not null");
+            return false;
+        }
+
+        control = document.getElementById("address");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Address can not null");
+            return false;
+        }
+
+        control = document.getElementById("workingtime");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Working Time can not null");
+            return false;
+        }
+
+        control = document.getElementById("pricerange");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Price Range can not null");
+            return false;
+        }
+
+        control = document.getElementById("phonenumber");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Phone Number can not null");
+            return false;
+        }
+
+        return true;
+    }
 </body>
 
 

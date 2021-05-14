@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-<?php include('functions.php') ?>
-
-=======
 <?php include('loginfunctions.php') ?>
->>>>>>> Stashed changes
 <div id = "Signup">
 <head>
 <meta charset="utf-8">
@@ -62,11 +57,7 @@
         font-size: 20px;
         color: #FF1493;
     }
-<<<<<<< Updated upstream
-    input[type=submit] 
-=======
     input[name = Register] 
->>>>>>> Stashed changes
     {
         background-color: #4CAF50;
         color: white;
@@ -154,12 +145,8 @@
 <h1><b>SIGNUP</b></h1>
 </div>
 <div class="formcontainer">
-<<<<<<< Updated upstream
-  <form methode = post, action="/action_page.php">
-=======
   <form method = "POST", action="Signup.php">
   <?php echo display_error(); ?>
->>>>>>> Stashed changes
   <div class="row">
     <div class="col-25">
       <label for="username">Username</label>
@@ -193,22 +180,10 @@
     </div>
   </div>
   <div class="row">
-<<<<<<< Updated upstream
-    <input type="submit" value="Register">
-  </div>
-  <?php echo display_error(); ?>
-  </form>
- 
-</div>
-</body>
-
-
-=======
     <input type="submit" value="Register" name = "Register">
   </div>
   </form>
 </div>
 </body>
 
->>>>>>> Stashed changes
 </body>

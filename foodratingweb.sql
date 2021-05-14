@@ -7,6 +7,12 @@
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
+-- Host: localhost:3306
+-- Generation Time: May 11, 2021 at 02:35 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -102,8 +108,8 @@ CREATE TABLE `food` (
 --
 
 CREATE TABLE `foodstalltype` (
-  `foodStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `postID` int(11) NOT NULL
+  `postID` int(11) NOT NULL,
+  `foodStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -174,7 +180,8 @@ CREATE TABLE `sentimentalword` (
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`username`),
-  ADD KEY `fk_account_isAdmin` (`isAdmin`);
+  ADD KEY `fk_account_isAdmin` (`isAdmin`),
+  ADD KEY `fk_account_post` (`postID`);
 
 --
 -- Chỉ mục cho bảng `comment`
@@ -204,7 +211,7 @@ ALTER TABLE `food`
 -- Chỉ mục cho bảng `foodstalltype`
 --
 ALTER TABLE `foodstalltype`
-  ADD PRIMARY KEY (`foodStallType`);
+  ADD PRIMARY KEY (`postID`);
 
 --
 -- Chỉ mục cho bảng `isadmin`
@@ -222,7 +229,9 @@ ALTER TABLE `post`
 -- Chỉ mục cho bảng `preferences`
 --
 ALTER TABLE `preferences`
-  ADD PRIMARY KEY (`postID`,`username`,`commentID`);
+  ADD PRIMARY KEY (`postID`,`username`,`commentID`),
+  ADD KEY `fk_preferences_comment` (`commentID`),
+  ADD KEY `fk_preferences_account` (`username`);
 
 --
 -- Chỉ mục cho bảng `sentimentalword`
@@ -254,7 +263,23 @@ ALTER TABLE `post`
 -- Các ràng buộc cho bảng `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `fk_account_isAdmin` FOREIGN KEY (`isAdmin`) REFERENCES `isadmin` (`isAdmin`);
+  ADD CONSTRAINT `fk_account_isAdmin` FOREIGN KEY (`isAdmin`) REFERENCES `isadmin` (`isAdmin`),
+  ADD CONSTRAINT `fk_account_post` FOREIGN KEY (`postID`) REFERENCES `post` (`postID`);
+
+--
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `fk_post_drink` FOREIGN KEY (`postID`) REFERENCES `drink` (`postID`),
+  ADD CONSTRAINT `fk_post_food` FOREIGN KEY (`postID`) REFERENCES `food` (`postID`);
+
+--
+-- Constraints for table `preferences`
+--
+ALTER TABLE `preferences`
+  ADD CONSTRAINT `fk_preferences_account` FOREIGN KEY (`username`) REFERENCES `account` (`username`),
+  ADD CONSTRAINT `fk_preferences_comment` FOREIGN KEY (`commentID`) REFERENCES `comment` (`commentID`),
+  ADD CONSTRAINT `fk_preferences_post` FOREIGN KEY (`postID`) REFERENCES `post` (`postID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
