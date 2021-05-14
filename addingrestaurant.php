@@ -139,7 +139,7 @@ p
                 DataProvider::ExecuteQuery($sql_1);
                 DataProvider::ExecuteQuery($sql_2);
             }
-            DataProvider::ChangeURL("index.php");
+            DataProvider::ChangeURL("AdminIndex.php");
         }
 ?>
 <body>  
