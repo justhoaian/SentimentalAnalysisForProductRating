@@ -97,16 +97,16 @@
 
                 <div class="w3-row m3 w3-row-padding w3-margin-top w3-round-large w3-collapse" style="z-index:3; background-color: #ffd1dc"> 
                     <div class="w3-container w3-margin-top">
-                        <a href="#restaurant" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
-                            <i class='w3-margin-right fas fa-pizza-slice'></i>Restaurants
+                        <a href="#CoffeeTea" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
+                            <i class='w3-margin-right fas fa-coffee'></i>Coffee & Tea
                         </a>
 
-                        <a href="#buffet" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
-                            <i class="fas fa-hamburger w3-margin-right"></i>Buffet
+                        <a href="#TakeAway" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
+                            <i class="fas fa-glass-whiskey w3-margin-right"></i>Take Away
                         </a>
 
-                        <a href="#streetFood" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
-                            <i class="fas fa-hotdog w3-margin-right"></i>Street Food
+                        <a href="#Lounge" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
+                            <i class="fas fa-glass-cheers w3-margin-right"></i>Lounge
                         </a>
                         
                         <div class="w3-panel w3-large" style="text-align: center">
@@ -146,7 +146,7 @@
                             while($row = mysqli_fetch_array($resultCoffeeTea)){
                                 echo"
                                 <!--Title-->
-                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='Coffee & Tea' style ='background-color: #ffd1dc'>
+                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='CoffeeTea' style ='background-color: #ffd1dc'>
                                             <h3 class ='title'>".$row['drinkStallType']."</h3>
                                     </div>
                             
@@ -211,7 +211,7 @@
                             while($row = mysqli_fetch_array($resultTakeAway)){
                                 echo"
                                 <!--Title-->
-                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='buffet' style ='background-color: #ffd1dc'>
+                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='TakeAway' style ='background-color: #ffd1dc'>
                                             <h3 class ='title'>".$row['drinkStallType']."</h3>
                                     </div>
                             
@@ -276,7 +276,7 @@
                             while($row = mysqli_fetch_array($resultLounge)){
                                 echo"
                                 <!--Title-->
-                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='streetFood' style ='background-color: #ffd1dc'>
+                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='Lounge' style ='background-color: #ffd1dc'>
                                             <h3 class ='title'>".$row['drinkStallType']."</h3>
                                     </div>
                             
