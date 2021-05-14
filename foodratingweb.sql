@@ -3,15 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 13, 2021 lúc 07:20 PM
+-- Thời gian đã tạo: Th5 14, 2021 lúc 11:42 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
-
--- Host: localhost:3306
--- Generation Time: May 11, 2021 at 02:35 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +31,7 @@ CREATE TABLE `account` (
   `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `isAdmin` int(11) NOT NULL,
   `postID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -66,8 +60,8 @@ CREATE TABLE `drink` (
   `postID` int(11) NOT NULL,
   `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `image` blob NOT NULL,
-  `workingTime` time NOT NULL,
+  `image` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `workingTime` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `priceRange` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `phoneNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `drinkName` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -94,8 +88,8 @@ CREATE TABLE `food` (
   `postID` int(11) NOT NULL,
   `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `image` blob NOT NULL,
-  `workingTime` time NOT NULL,
+  `image` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `workingTime` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `priceRange` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `phoneNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `foodName` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -108,8 +102,8 @@ CREATE TABLE `food` (
 --
 
 CREATE TABLE `foodstalltype` (
-  `postID` int(11) NOT NULL,
-  `foodStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `foodStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `postID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -128,8 +122,8 @@ CREATE TABLE `isadmin` (
 --
 
 INSERT INTO `isadmin` (`isAdmin`, `isAdmin_name`) VALUES
-(0, 'admin'),
-(1, 'user');
+(0, 'user'),
+(1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -139,11 +133,11 @@ INSERT INTO `isadmin` (`isAdmin`, `isAdmin_name`) VALUES
 
 CREATE TABLE `post` (
   `postID` int(11) NOT NULL,
-  `nameofbeverage` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `image` blob NOT NULL,
-  `workingTime` time NOT NULL,
+  `image` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `workingTime` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `priceRange` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `phoneNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -172,6 +166,62 @@ CREATE TABLE `sentimentalword` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Đang đổ dữ liệu cho bảng `sentimentalword`
+--
+
+INSERT INTO `sentimentalword` (`word`, `weight`) VALUES
+('acceptable', 8),
+('adorable', 10),
+('agreeable', 10),
+('amazing', 10),
+('appetizing', 10),
+('attractive', 10),
+('awesome', 10),
+('beautiful', 10),
+('charming', 10),
+('clean', 10),
+('considerate', 10),
+('cool', 8),
+('courteous', 10),
+('cute', 10),
+('delicious', 10),
+('delightful', 10),
+('diligent', 10),
+('elegant', 10),
+('enthusiastic', 10),
+('excellent', 10),
+('fabulous', 10),
+('fair', 7),
+('fantastic', 10),
+('generous', 10),
+('good', 8),
+('gorgeous', 10),
+('happy', 10),
+('heavenly', 10),
+('helpful', 10),
+('incredible', 10),
+('inventive', 10),
+('likable', 10),
+('mind-blowing', 10),
+('mouthwatering', 10),
+('outstanding', 10),
+('passionate', 10),
+('pleasant', 10),
+('reliable', 10),
+('resourceful', 10),
+('satisfied', 10),
+('sensible', 10),
+('sincere', 10),
+('sleek', 10),
+('splendid', 10),
+('tasty', 10),
+('tempting', 10),
+('toothsome', 10),
+('trustworthy', 10),
+('wonderful', 10),
+('yummy', 10);
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -180,8 +230,7 @@ CREATE TABLE `sentimentalword` (
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`username`),
-  ADD KEY `fk_account_isAdmin` (`isAdmin`),
-  ADD KEY `fk_account_post` (`postID`);
+  ADD KEY `fk_account_isAdmin` (`isAdmin`);
 
 --
 -- Chỉ mục cho bảng `comment`
@@ -211,7 +260,7 @@ ALTER TABLE `food`
 -- Chỉ mục cho bảng `foodstalltype`
 --
 ALTER TABLE `foodstalltype`
-  ADD PRIMARY KEY (`postID`);
+  ADD PRIMARY KEY (`foodStallType`);
 
 --
 -- Chỉ mục cho bảng `isadmin`
@@ -229,9 +278,7 @@ ALTER TABLE `post`
 -- Chỉ mục cho bảng `preferences`
 --
 ALTER TABLE `preferences`
-  ADD PRIMARY KEY (`postID`,`username`,`commentID`),
-  ADD KEY `fk_preferences_comment` (`commentID`),
-  ADD KEY `fk_preferences_account` (`username`);
+  ADD PRIMARY KEY (`postID`,`username`,`commentID`);
 
 --
 -- Chỉ mục cho bảng `sentimentalword`
@@ -247,7 +294,19 @@ ALTER TABLE `sentimentalword`
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `drink`
+--
+ALTER TABLE `drink`
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `food`
+--
+ALTER TABLE `food`
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `post`
@@ -263,23 +322,7 @@ ALTER TABLE `post`
 -- Các ràng buộc cho bảng `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `fk_account_isAdmin` FOREIGN KEY (`isAdmin`) REFERENCES `isadmin` (`isAdmin`),
-  ADD CONSTRAINT `fk_account_post` FOREIGN KEY (`postID`) REFERENCES `post` (`postID`);
-
---
--- Constraints for table `post`
---
-ALTER TABLE `post`
-  ADD CONSTRAINT `fk_post_drink` FOREIGN KEY (`postID`) REFERENCES `drink` (`postID`),
-  ADD CONSTRAINT `fk_post_food` FOREIGN KEY (`postID`) REFERENCES `food` (`postID`);
-
---
--- Constraints for table `preferences`
---
-ALTER TABLE `preferences`
-  ADD CONSTRAINT `fk_preferences_account` FOREIGN KEY (`username`) REFERENCES `account` (`username`),
-  ADD CONSTRAINT `fk_preferences_comment` FOREIGN KEY (`commentID`) REFERENCES `comment` (`commentID`),
-  ADD CONSTRAINT `fk_preferences_post` FOREIGN KEY (`postID`) REFERENCES `post` (`postID`);
+  ADD CONSTRAINT `fk_account_isAdmin` FOREIGN KEY (`isAdmin`) REFERENCES `isadmin` (`isAdmin`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
