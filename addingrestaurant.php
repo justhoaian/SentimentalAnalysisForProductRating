@@ -124,14 +124,14 @@ p
             $workingtime = $_POST["workingtime"];
             $pricerange = $_POST["pricerange"];
             $phonenumber = $_POST["phonenumber"];
-            $types = $_POST["types"];
+            $foodtypes = $_POST["foodtypes"];
 
             $sql = "insert into food (postID, rating, address, image, workingTime,priceRange, phoneNumber, foodName) 
             values ('$postID','$rating','$address','$image','$workingtime','$pricerange', '$phonenumber','$name')";
             $sql_1 = "insert into post (postID, name, rating, address, image, workingTime, priceRange, phoneNumber)
             values ('$postID', '$name', '$rating', '$address', 'img/'+'$image', '$workingtime', '$pricerange', '$phonenumber')";
             $sql_2 = "insert into foodstalltype (postID, foodstalltype)
-            values ('$postID', '$type')";
+            values ('$postID', '$foodtypes')";
 
             if(($connection->query($sql) == true) && ($connection->query($sql_1) == true) && ($connection->query($sql_2) == true))
             {
