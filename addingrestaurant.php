@@ -136,7 +136,7 @@ p
             if(($connection->query($sql) == true) && ($connection->query($sql_1) == true) && ($connection->query($sql_2) == true))
             {
             }
-            DataProvider::ChangeURL("AdminIndex.php");
+            DataProvider::ChangeURL("AdminFood.php");
         }
 ?>
 <body>  
