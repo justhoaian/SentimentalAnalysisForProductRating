@@ -126,18 +126,15 @@ p
             $phonenumber = $_POST["phonenumber"];
             $foodtypes = $_POST["foodtypes"];
 
-            $sql = "insert into food (postID, rating, address, image, workingTime,priceRange, phoneNumber, foodName) 
-            values ('$postID','$rating','$address','$image','$workingtime','$pricerange', '$phonenumber','$name')";
-            $sql_1 = "insert into post (postID, name, rating, address, image, workingTime, priceRange, phoneNumber)
-            values ('$postID', '$name', '$rating', '$address', 'img/'+'$image', '$workingtime', '$pricerange', '$phonenumber')";
-            $sql_2 = "insert into foodstalltype (postID, foodstalltype)
-            values ('$postID', '$foodtypes')";
+            $sql = "insert into food (address, image, workingTime,priceRange, phoneNumber, foodName) 
+            values ('$address','img/$image','$workingtime','$pricerange', '$phonenumber','$name')";
+            $sql_1 = "insert into post (name, address, image, workingTime, priceRange, phoneNumber)
+            values ('$name', '$address', 'img/$image', '$workingtime', '$pricerange', '$phonenumber')";
+            $sql_2 = "insert into foodstalltype (foodStallType)
+            values ('$foodtypes')";
 
             if(($connection->query($sql) == true) && ($connection->query($sql_1) == true) && ($connection->query($sql_2) == true))
             {
-                DataProvider::ExecuteQuery($sql);
-                DataProvider::ExecuteQuery($sql_1);
-                DataProvider::ExecuteQuery($sql_2);
             }
             DataProvider::ChangeURL("AdminIndex.php");
         }
@@ -172,7 +169,7 @@ p
       <label for="address">Address</label>
     </div>
     <div class="col-75">
-      <input type="text" id="address" name="address" placeholder="Full district...">
+      <input type="text" id="address" name="address" placeholder="Including city...">
     </div>
   </div>
   <div class="row">

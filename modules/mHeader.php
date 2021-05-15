@@ -13,7 +13,7 @@
                 <th class ="w3-right-align">
                 
                     <?php
-                    if(isset($_SESSION['account_id']))
+                    if(isset($_SESSION['username']))
                     {
                         include ("modules/mAccountInfor.php");
                     }

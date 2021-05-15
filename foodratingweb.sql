@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 14, 2021 lúc 11:42 AM
+-- Thời gian đã tạo: Th5 15, 2021 lúc 10:21 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -32,8 +32,8 @@ CREATE TABLE `account` (
   `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `isAdmin` int(11) NOT NULL,
-  `postID` int(11) NOT NULL
+  `isAdmin` int(11) NOT NULL DEFAULT 0,
+  `postID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -60,7 +60,7 @@ CREATE TABLE `drink` (
   `postID` int(11) NOT NULL,
   `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `workingTime` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `priceRange` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `phoneNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -74,8 +74,8 @@ CREATE TABLE `drink` (
 --
 
 CREATE TABLE `drinkstalltype` (
-  `drinkStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `postID` int(11) NOT NULL
+  `postID` int(11) NOT NULL,
+  `drinkStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -86,9 +86,9 @@ CREATE TABLE `drinkstalltype` (
 
 CREATE TABLE `food` (
   `postID` int(11) NOT NULL,
-  `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '5',
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `workingTime` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `priceRange` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `phoneNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -102,8 +102,8 @@ CREATE TABLE `food` (
 --
 
 CREATE TABLE `foodstalltype` (
-  `foodStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `postID` int(11) NOT NULL
+  `postID` int(11) NOT NULL,
+  `foodStallType` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -134,9 +134,9 @@ INSERT INTO `isadmin` (`isAdmin`, `isAdmin_name`) VALUES
 CREATE TABLE `post` (
   `postID` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '5',
   `address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `workingTime` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `priceRange` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `phoneNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -248,7 +248,7 @@ ALTER TABLE `drink`
 -- Chỉ mục cho bảng `drinkstalltype`
 --
 ALTER TABLE `drinkstalltype`
-  ADD PRIMARY KEY (`drinkStallType`);
+  ADD PRIMARY KEY (`postID`);
 
 --
 -- Chỉ mục cho bảng `food`
@@ -260,7 +260,7 @@ ALTER TABLE `food`
 -- Chỉ mục cho bảng `foodstalltype`
 --
 ALTER TABLE `foodstalltype`
-  ADD PRIMARY KEY (`foodStallType`);
+  ADD PRIMARY KEY (`postID`);
 
 --
 -- Chỉ mục cho bảng `isadmin`
@@ -303,9 +303,21 @@ ALTER TABLE `drink`
   MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `drinkstalltype`
+--
+ALTER TABLE `drinkstalltype`
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `food`
 --
 ALTER TABLE `food`
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `foodstalltype`
+--
+ALTER TABLE `foodstalltype`
   MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -322,7 +334,7 @@ ALTER TABLE `post`
 -- Các ràng buộc cho bảng `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `fk_account_isAdmin` FOREIGN KEY (`isAdmin`) REFERENCES `isadmin` (`isAdmin`);
+  ADD CONSTRAINT `fk_account_isAdmin` FOREIGN KEY (`isAdmin`) REFERENCES `isadmin` (`isAdmin`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
