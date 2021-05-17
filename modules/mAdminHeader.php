@@ -24,6 +24,7 @@
                             <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Logout</button>
                         </a>  
                     </th>
+                </th>
             </tr>
         </table>
     </div>
@@ -36,7 +37,8 @@
                     <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</button></a>
                 <a href="AdminFood.php">
                     <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</button></a>
-                <a href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
+                    <a href="Admindrink.php">
+                <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drink</button></a>
                     <div class = "w3-dropdown-hover">
                     <button class = "w3-bar-item w3-button w3-mobile w3-round-large">Admin</button>
                         <div class = "w3-dropdown-content w3-bar-block w3-card-4">
@@ -44,8 +46,6 @@
                             <button href="#" class="w3-bar-item w3-button">Adding Restaurant</button></a>
                         <a href="Addingcoffee.php">
                             <button href="#" class="w3-bar-item w3-button">Adding Coffee Shop</button></a>
-                        <a href="Deleting.php">
-                            <button href="#" class="w3-bar-item w3-button">Deleting</button></a>
                         </div>
                     </div>
                 <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
