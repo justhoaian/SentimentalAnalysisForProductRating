@@ -101,8 +101,8 @@
                             <i class='w3-margin-right fas fa-coffee'></i>Coffee & Tea
                         </a>
 
-                        <a href="#TakeAway" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
-                            <i class="fas fa-glass-whiskey w3-margin-right"></i>Take Away
+                        <a href="#Takeaway" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
+                            <i class="fas fa-glass-whiskey w3-margin-right"></i>Takeaway
                         </a>
 
                         <a href="#Lounge" onclick="w3_close()" class="main w3-bar-item w3-button w3-padding">
@@ -138,7 +138,7 @@
 
                     //Restaurant
                     $sqlCoffeeTea = "SELECT * FROM drink, drinkstalltype 
-                    WHERE drinkStallType = 'Coffee & Tea'
+                    WHERE drinkStallType = 'Coffee&Tea'
                     AND drink.postID = drinkstalltype.postID";
                     $resultCoffeeTea = mysqli_query($connection, $sqlCoffeeTea);
                     if ($resultCoffeeTea){
@@ -203,7 +203,7 @@
 
                     //Take Away
                     $sqlTakeAway = "SELECT * FROM drink, drinkstalltype 
-                    WHERE drinkStallType = 'Take Away' 
+                    WHERE drinkStallType = 'Takeaway' 
                     AND drink.postID = drinkstalltype.postID";
                     $resultTakeAway = mysqli_query($connection, $sqlTakeAway);
                     if ($resultTakeAway){
@@ -211,7 +211,7 @@
                             while($row = mysqli_fetch_array($resultTakeAway)){
                                 echo"
                                 <!--Title-->
-                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='TakeAway' style ='background-color: #ffd1dc'>
+                                <div class='row w3-round-large w3-margin-top w3-margin-bottom' id='Takeaway' style ='background-color: #ffd1dc'>
                                             <h3 class ='title'>".$row['drinkStallType']."</h3>
                                     </div>
                             

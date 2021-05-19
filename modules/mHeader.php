@@ -36,8 +36,7 @@
                 <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Home</button></a>
             <a href="Food.php">
                 <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</button></a>
-                <a href="Drink.php">
-            <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drink</button></a>
+            <a href="Drink.php" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</a>
             <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
             <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
         </div>

@@ -1,4 +1,4 @@
-<div id = addingrestaurant>
+<div id = addingdrinks>
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@ input[type=text], select, textarea {
 label {
   padding: 5px 12px 7px 0;
   display: inline-block;
-  font-size: 20px;
+  font-size: 17px;
   color: #FF1493;
 }
 input[type=submit] {
@@ -117,26 +117,34 @@ p
       }
            
     if(isset($_POST["name"]) && isset($_POST["image"]) && isset($_POST["address"]) && isset($_POST["workingtime"]) && isset($_POST["pricerange"]) 
-      && isset($_POST["phonenumber"]) && isset($_POST["foodStallType"])){
+      && isset($_POST["phonenumber"]) && isset($_POST["drinkstypes"])){
             $name = $_POST["name"];
             $image = $_POST["image"];
             $address = $_POST["address"];
             $workingtime = $_POST["workingtime"];
             $pricerange = $_POST["pricerange"];
             $phonenumber = $_POST["phonenumber"];
-            $foodStallType = $_POST["foodStallType"];
+            $drinkstypes = $_POST["drinkstypes"];
 
-            $sql = "insert into food (address, image, workingTime,priceRange, phoneNumber, foodName) 
-            values ('$address','img/$image','$workingtime','$pricerange', '$phonenumber','$name')";
-            $sql_1 = "insert into post (name, address, image, workingTime, priceRange, phoneNumber)
+            $sql = "insert into post (name, address, image, workingTime, priceRange, phoneNumber)
             values ('$name', '$address', 'img/$image', '$workingtime', '$pricerange', '$phonenumber')";
-            $sql_2 = "insert into foodstalltype (foodStallType)
-            values ('$foodStallType')";
 
-            if(($connection->query($sql) == true) && ($connection->query($sql_1) == true) && ($connection->query($sql_2) == true))
+            if($connection->query($sql) == true)
             {
             }
-            DataProvider::ChangeURL("AdminFood.php");
+
+            $sql_1 = "insert into drink (postID, address, image, drinkName, phoneNumber, priceRange, workingTime)
+            select post.postID, post.address, post.image, post.name, post.phoneNumber, post.priceRange, post.workingTime
+            from post
+            where post.postID = (select max(p1.postID) from post as p1)";
+            $sql_2 = "insert into drinkstalltype (postID, drinkStallType)
+            values ((select max(postID) from post), '$drinkstypes')";
+
+            if(($connection->query($sql_1) == true) && ($connection->query($sql_2) == true))
+            {
+            }
+
+            DataProvider::ChangeURL("Drink.php");
         }
 ?>
 <body>  
@@ -144,11 +152,11 @@ p
 <!--Adding form-->
 <br>
 <div class = "heading">
-<h1><b>ADDING FOOD</b></h1>
+<h1><b>ADD DRINKS</b></h1>
 </div>
 
 <div class="formcontainer">
-  <form method = "post" action="addingrestaurant.php">
+  <form method = "post" action="addingDrinks.php">
   <div class="row">
     <div class="col-25">
       <label for="name">Name</label>
@@ -198,13 +206,13 @@ p
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="foodStallType">Types of food</label>
+      <label for="drinkstypes">Types of drinks</label>
     </div>
     <div class="col-75">
-      <select id="foodStallType" name="foodStallType">
-        <option value="Street Food">Street Food</option>
-        <option value="Restaurant">Restaurant</option>
-        <option value="Buffet">Buffet</option>
+      <select id="drinkstypes" name="drinkstypes">
+        <option value="Coffee&Tea">Coffee & Tea</option>
+        <option value="Takeaway">Takeaway</option>
+        <option value="Lounge">Lounge</option>
       </select>
     </div>
   </div>
@@ -213,53 +221,5 @@ p
     <input type="submit" value="Submit">
   </form>
 </div>
-
-<script type="text/javascript">
-    function CheckLogin()
-    {
-        var control = document.getElementById("name");
-        if(control.value =="")
-        {
-            control.focus();
-            alert("Name can not null");
-            return false;
-        }
-
-        control = document.getElementById("address");
-        if(control.value == "")
-        {
-            control.focus();
-            alert("Address can not null");
-            return false;
-        }
-
-        control = document.getElementById("workingtime");
-        if(control.value == "")
-        {
-            control.focus();
-            alert("Working Time can not null");
-            return false;
-        }
-
-        control = document.getElementById("pricerange");
-        if(control.value == "")
-        {
-            control.focus();
-            alert("Price Range can not null");
-            return false;
-        }
-
-        control = document.getElementById("phonenumber");
-        if(control.value == "")
-        {
-            control.focus();
-            alert("Phone Number can not null");
-            return false;
-        }
-
-        return true;
-    }
-
 </body>
-
 
