@@ -20,58 +20,6 @@
     <script src="JS/jquery.zoom.min.js"></script>
 
     <style>
-        .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-        }
-
-        .sticky + .content {
-            padding-top: 60px;
-        }
-
-		body
-		{
-			background-image: url('img/background1.jpg');
-			background-repeat: no-repeat;
-			background-attachment: fixed;
-            background-size: 100% 100%;
-		}
-
-		p{
-			font-size: 13px;
-            color: #FF1493;
-		}
-
-        .pro_pic{
-            border-radius: 50%;
-            height: 50px;
-            width: 50px;
-            margin-bottom: 15px;
-            margin-right: 15px;
-        }
-        
-        .title{
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-size: 35px;
-            color: #DC143C;
-            text-align: center;
-            display: block;
-        }
-
-        .food-and-drink-title{
-            margin-top: 0px;
-            margin-bottom: 10px;
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 35px;
-            letter-spacing: 2.5px;
-            font-weight: 800;
-            color: #e0607b;
-            display: block;
-        }
-
         input[type=text] {
             padding: 10px;
             border:0;
@@ -118,10 +66,10 @@
         }
 
         function append_string ($str1, $str2) {
-      
             // Using Concatenation assignment
             // operator (.=)
-            $str1 .=$str2;
+            $str1 .= $str2;
+            $str1 .= ", ";
               
             // Returning the result str1 + str2
             return $str1;
@@ -129,53 +77,49 @@
             
         if(isset($_POST["txtComment"])){
             
-                $content = $_POST["txtComment"];
+            $content = $_POST["txtComment"];
+            $validWord = (string) NULL;
 
-                $sqlSentementalWordFromSentimentalWord = "SELECT word FROM sentimentalword";
-                $resultSentementalWordFromSentimentalWord = mysqli_query($connection, $sqlSentementalWordFromSentimentalWord);
+            $sqlComment = "INSERT into comment SET
+            commentID = NULL,
+            username = 'hehe',
+            content = '$content',
+            word = NULL,
+            time = DEFAULT";
 
-                while($arraySentimetalWord = mysqli_fetch_array($resultSentementalWordFromSentimentalWord)){
+            $addComment = mysqli_query($connection, $sqlComment) or die (mysqli_connect_errno()."Cannot insert comment");;
+            $sqlSentementalWordFromSentimentalWord = "SELECT word FROM sentimentalword";
+            $resultSentementalWordFromSentimentalWord = mysqli_query($connection, $sqlSentementalWordFromSentimentalWord);
+
+            while($arraySentimetalWord = mysqli_fetch_array($resultSentementalWordFromSentimentalWord)){
+                $sentimentalWord = $arraySentimetalWord["word"];
+                $HASsentimentalWordFromComment = strpos($content, $sentimentalWord);
+
+                if ($HASsentimentalWordFromComment !== false){
+                    $validWord = append_string($validWord, $sentimentalWord);
+                    $sqlComment = "UPDATE comment 
+                    SET word = '$validWord'
+                    WHERE content = '$content'";
+                    $addComment = mysqli_query($connection, $sqlComment) or die (mysqli_connect_errno()."Cannot insert word");;
                     
-                    $sentimentalWord = $arraySentimetalWord["word"];
-
-                    $HASsentimentalWordFromComment = strpos($content, $sentimentalWord);
-                    if ($HASsentimentalWordFromComment !== false){
-                        $content = $_POST["txtComment"];
-                        $sqlComment = "INSERT into comment SET
-                        commentID = NULL,
-                        username = 'hehe',
-                        content = '$content',
-                        word = '$sentimentalWord',
-                        time = DEFAULT";
-                        $addComment = mysqli_query($connection, $sqlComment) or die (mysqli_connect_errno()."Cannot insert comment");;
-
-                        if($addComment){
-                            $result = "succeed";
-                            if($result){
-                                echo"
-                                    <script type='text/javascript'>
-                                        alert('".$result."');
-                                    </script>
-                                ";
-                            }
-                        }
-                        if(!$addComment){
-                            $result = "failed";
-                            if($result){
-                                echo"
-                                    <script type='text/javascript'>
-                                        alert('".$result."');
-                                    </script>
-                                ";
-                            }
-                        }
-
-
+                    if($addComment){
+                        $result = "succeed";
+                    }
+                    if(!$addComment){
+                        $result = "failed";
                     }
                 }
-
-                DataProvider::ChangeURL("Rating.php");
             }
+
+            if($result){
+                echo"
+                    <script type='text/javascript'>
+                        alert('".$result."');
+                    </script>
+                ";
+            }
+            DataProvider::ChangeURL("Rating.php");
+        }
     ?>
 </body>
 </html>

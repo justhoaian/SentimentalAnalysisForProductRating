@@ -47,7 +47,7 @@ CREATE TABLE `comment` (
   `username` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `time` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `word` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
+  `word` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
