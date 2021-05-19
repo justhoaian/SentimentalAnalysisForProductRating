@@ -71,8 +71,6 @@ CREATE TABLE `drink` (
 -- Đang đổ dữ liệu cho bảng `drink`
 --
 
-INSERT INTO `drink` (`postID`, `rating`, `address`, `image`, `workingTime`, `priceRange`, `phoneNumber`, `drinkName`) VALUES
-;
 
 -- --------------------------------------------------------
 
@@ -89,8 +87,6 @@ CREATE TABLE `drinkstalltype` (
 -- Đang đổ dữ liệu cho bảng `drinkstalltype`
 --
 
-INSERT INTO `drinkstalltype` (`postID`, `drinkStallType`) VALUES
-;
 
 -- --------------------------------------------------------
 
@@ -181,7 +177,7 @@ CREATE TABLE `post` (
 INSERT INTO `post` (`postID`, `name`, `rating`, `address`, `image`, `workingTime`, `priceRange`, `phoneNumber`) VALUES
 (1, 'DMaris', '5', 'Nguyen Dinh Chieu, District 3', 'img/dmaris.jpg', '10am - 9pm', '45-90', '023145'),
 (2, 'Thơm House', '5', 'District 10', 'img/thom.jpg', '3pm - 10pm', '25-60', '090909'),
-(3, 'Marcel Burger', '5', 'District 2', 'img/food2.jpg', '10am - 9pm', '200-300', '090909'),
+(3, 'Marcel Burger', '5', 'District 2', 'img/food2.jpg', '10am - 9pm', '200-300', '090909');
 
 -- --------------------------------------------------------
 
