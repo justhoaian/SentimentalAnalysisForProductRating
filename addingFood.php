@@ -144,7 +144,7 @@ p
             {
             }
 
-            DataProvider::ChangeURL("Food.php");
+            DataProvider::ChangeURL("Adminfood.php");
         }
 ?>
 <body>  

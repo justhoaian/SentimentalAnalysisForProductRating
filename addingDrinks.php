@@ -144,7 +144,7 @@ p
             {
             }
 
-            DataProvider::ChangeURL("Drink.php");
+            DataProvider::ChangeURL("Admindrink.php");
         }
 ?>
 <body>  
