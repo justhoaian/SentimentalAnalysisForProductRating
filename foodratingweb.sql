@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 15, 2021 lúc 10:21 AM
--- Phiên bản máy phục vụ: 10.4.18-MariaDB
--- Phiên bản PHP: 8.0.3
+-- Host: localhost:3306
+-- Generation Time: May 17, 2021 at 04:14 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `foodratingweb`
+-- Database: `foodratingweb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
@@ -39,7 +39,7 @@ CREATE TABLE `account` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -53,7 +53,7 @@ CREATE TABLE `comment` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `drink`
+-- Table structure for table `drink`
 --
 
 CREATE TABLE `drink` (
@@ -70,7 +70,7 @@ CREATE TABLE `drink` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `drinkstalltype`
+-- Table structure for table `drinkstalltype`
 --
 
 CREATE TABLE `drinkstalltype` (
@@ -81,7 +81,7 @@ CREATE TABLE `drinkstalltype` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `food`
+-- Table structure for table `food`
 --
 
 CREATE TABLE `food` (
@@ -98,7 +98,7 @@ CREATE TABLE `food` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `foodstalltype`
+-- Table structure for table `foodstalltype`
 --
 
 CREATE TABLE `foodstalltype` (
@@ -109,7 +109,7 @@ CREATE TABLE `foodstalltype` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `isadmin`
+-- Table structure for table `isadmin`
 --
 
 CREATE TABLE `isadmin` (
@@ -118,7 +118,7 @@ CREATE TABLE `isadmin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `isadmin`
+-- Dumping data for table `isadmin`
 --
 
 INSERT INTO `isadmin` (`isAdmin`, `isAdmin_name`) VALUES
@@ -128,15 +128,15 @@ INSERT INTO `isadmin` (`isAdmin`, `isAdmin_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `post`
+-- Table structure for table `post`
 --
 
 CREATE TABLE `post` (
   `postID` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '5',
+  `rating` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `workingTime` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `priceRange` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `phoneNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -145,7 +145,7 @@ CREATE TABLE `post` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `preferences`
+-- Table structure for table `preferences`
 --
 
 CREATE TABLE `preferences` (
@@ -157,7 +157,7 @@ CREATE TABLE `preferences` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sentimentalword`
+-- Table structure for table `sentimentalword`
 --
 
 CREATE TABLE `sentimentalword` (
@@ -166,7 +166,7 @@ CREATE TABLE `sentimentalword` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `sentimentalword`
+-- Dumping data for table `sentimentalword`
 --
 
 INSERT INTO `sentimentalword` (`word`, `weight`) VALUES
@@ -222,119 +222,117 @@ INSERT INTO `sentimentalword` (`word`, `weight`) VALUES
 ('yummy', 10);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `account`
+-- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`username`),
   ADD KEY `fk_account_isAdmin` (`isAdmin`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`commentID`);
 
 --
--- Chỉ mục cho bảng `drink`
+-- Indexes for table `drink`
 --
 ALTER TABLE `drink`
   ADD PRIMARY KEY (`postID`);
 
 --
--- Chỉ mục cho bảng `drinkstalltype`
+-- Indexes for table `drinkstalltype`
 --
 ALTER TABLE `drinkstalltype`
   ADD PRIMARY KEY (`postID`);
 
 --
--- Chỉ mục cho bảng `food`
+-- Indexes for table `food`
 --
 ALTER TABLE `food`
   ADD PRIMARY KEY (`postID`);
 
 --
--- Chỉ mục cho bảng `foodstalltype`
+-- Indexes for table `foodstalltype`
 --
 ALTER TABLE `foodstalltype`
   ADD PRIMARY KEY (`postID`);
 
 --
--- Chỉ mục cho bảng `isadmin`
+-- Indexes for table `isadmin`
 --
 ALTER TABLE `isadmin`
   ADD PRIMARY KEY (`isAdmin`);
 
 --
--- Chỉ mục cho bảng `post`
+-- Indexes for table `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`postID`);
 
 --
--- Chỉ mục cho bảng `preferences`
+-- Indexes for table `preferences`
 --
 ALTER TABLE `preferences`
-  ADD PRIMARY KEY (`postID`,`username`,`commentID`);
+  ADD PRIMARY KEY (`postID`,`username`,`commentID`),
+  ADD KEY `fk_preferences_account` (`username`),
+  ADD KEY `fk_preferences_comment` (`commentID`);
 
 --
--- Chỉ mục cho bảng `sentimentalword`
+-- Indexes for table `sentimentalword`
 --
 ALTER TABLE `sentimentalword`
   ADD PRIMARY KEY (`word`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `drink`
+-- AUTO_INCREMENT for table `drink`
 --
 ALTER TABLE `drink`
   MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `drinkstalltype`
+-- AUTO_INCREMENT for table `drinkstalltype`
 --
 ALTER TABLE `drinkstalltype`
   MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `food`
---
-ALTER TABLE `food`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `foodstalltype`
---
-ALTER TABLE `foodstalltype`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `post`
+-- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
   MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `account`
+-- Constraints for table `account`
 --
 ALTER TABLE `account`
   ADD CONSTRAINT `fk_account_isAdmin` FOREIGN KEY (`isAdmin`) REFERENCES `isadmin` (`isAdmin`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `preferences`
+--
+ALTER TABLE `preferences`
+  ADD CONSTRAINT `fk_preferences_account` FOREIGN KEY (`username`) REFERENCES `account` (`username`),
+  ADD CONSTRAINT `fk_preferences_comment` FOREIGN KEY (`commentID`) REFERENCES `comment` (`commentID`),
+  ADD CONSTRAINT `fk_preferences_post` FOREIGN KEY (`postID`) REFERENCES `post` (`postID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

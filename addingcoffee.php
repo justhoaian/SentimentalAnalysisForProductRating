@@ -1,6 +1,4 @@
-<?php include('addingcoffunction.php') ?>
-
-<div id = Adding>
+<div id = addingdrink>
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,7 +30,7 @@ label {
   color: #FF1493;
 }
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: teal;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -41,7 +39,7 @@ input[type=submit] {
   float: right;
 }
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: pink;
 }
 .col-25 {
   float: left;
@@ -106,19 +104,54 @@ p
 }
 </style>
 </head>
+<?php
+    
+    include_once "lib/config.php";
+    include_once "lib/DataProvider.php";
+    global $db_host, $db_username, $db_password, $db_name;
+
+    $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+    /* check connection */
+    if ($connection->connect_error) {      
+        die("Failed to connect: " . $connection->connect_error);
+      }
+           
+    if(isset($_POST["name"]) && isset($_POST["image"]) && isset($_POST["address"]) && isset($_POST["workingtime"]) && isset($_POST["pricerange"]) 
+      && isset($_POST["phonenumber"]) && isset($_POST["drinkStallType"])){
+            $name = $_POST["name"];
+            $image = $_POST["image"];
+            $address = $_POST["address"];
+            $workingtime = $_POST["workingtime"];
+            $pricerange = $_POST["pricerange"];
+            $phonenumber = $_POST["phonenumber"];
+            $drinkStallType = $_POST["drinkStallType"];
+
+            $sql = "insert into drink (address, image, workingTime,priceRange, phoneNumber, drinkName) 
+            values ('$address','img/$image','$workingtime','$pricerange', '$phonenumber','$name')";
+            $sql_1 = "insert into post (name, address, image, workingTime, priceRange, phoneNumber)
+            values ('$name', '$address', 'img/$image', '$workingtime', '$pricerange', '$phonenumber')";
+            $sql_2 = "insert into drinkstalltype (drinkStallType)
+            values ('$drinkStallType')";
+
+            if(($connection->query($sql) == true) && ($connection->query($sql_1) == true) && ($connection->query($sql_2) == true))
+            {
+            }
+            DataProvider::ChangeURL("AdminIndex.php");
+        }
+?>
 <body>  
     <?php include ('modules/mAdminHeader.php'); ?>
-
 <!--Adding form-->
 <br>
 <div class = "heading">
-<h1><b>ADDING COFFEE SHOP</b></h1>
+<h1><b>ADDING DRINK</b></h1>
 </div>
+
 <div class="formcontainer">
   <form method = "post" action="addingcoffee.php">
   <div class="row">
     <div class="col-25">
-      <label for="name">Name of coffee shop</label>
+      <label for="name">Name</label>
     </div>
     <div class="col-75">
       <input type="text" id="name" name="name" style="height: 60px">
@@ -130,13 +163,13 @@ p
     </div>
     <br>
     <input type="file" name="image" id="image">
-  </div>
+    </div>
   <div class="row">
     <div class="col-25">
       <label for="address">Address</label>
     </div>
     <div class="col-75">
-      <input type="text" id="address" name="address" placeholder="Full district...">
+      <input type="text" id="address" name="address" placeholder="Including city...">
     </div>
   </div>
   <div class="row">
@@ -161,6 +194,18 @@ p
     </div>
     <div class="col-75">
       <input type="text" id="phonenumber" name="phonenumber" style="height: 60px">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="drinkStallType">Types of drink</label>
+    </div>
+    <div class="col-75">
+      <select id="drinkStallType" name="drinkStallType">
+        <option value="CoffeeTea">Coffee & Tea</option>
+        <option value="Take Away">Take Away</option>
+        <option value="Lounge">Lounge</option>
+      </select>
     </div>
   </div>
   <br>
