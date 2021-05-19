@@ -1,4 +1,4 @@
-<!-- <?php include('function/loginfunction.php') ?> -->
+
 <div id = "Signup">
 <head>
 <meta charset="utf-8">
@@ -103,6 +103,10 @@
         top: 0;
         padding: 15px;
     }
+    .error{
+        font-size: 18px;
+        color: red;
+    }
     /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
     @media screen and (max-width: 600px) 
     {
@@ -118,6 +122,8 @@
     
     include_once "lib/config.php";
     include_once "lib/DataProvider.php";
+    include_once "function/session.php";
+    
     global $db_host, $db_username, $db_password, $db_name;
 
     $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
@@ -125,8 +131,18 @@
     if ($connection->connect_error) {      
         die("Failed to connect: " . $connection->connect_error);
     }
-           
-    if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["email"])){
+
+    if ($checkquery = $connection->prepare("Select * from account where username = ?")){
+        $error ='';
+        $checkquery->bind_param ('s', $username);
+        $checkquery->execute();
+        $checkquery->store_result();
+        if($checkquery->num_rows > 0){
+            $error .= '<p class = "error"> The username is already taken! Please input another one</p>';
+        }
+    }
+    if (empty($error)){
+        if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["email"])){
             $username = $_POST["username"];
             $password = $_POST["password"];
             $name = $_POST["name"];
@@ -136,9 +152,15 @@
             values ('$username','$password','$name','$email')";
             if($connection->query($sql) == true)
             {
+                $error .= '<p class="error"> Your registration was successful! </p>';
             }
-            DataProvider::ChangeURL("index.php");
+            else{
+                $error .= '<p class="error"> Something went wrong! </p>';
+            }
+            
         }
+    }
+    
 ?>
 <body>  
 <div class="container">
@@ -167,8 +189,9 @@
 <div class = "heading">
 <h1><b>SIGN UP</b></h1>
 </div>
+<?php echo $error; ?>
 <div class="formcontainer">
-  <form method = "POST", action="Signup.php">
+  <form method = "POST", action="Signup.php", onSubmit = " return checkRegister()">
   <div class="row">
     <div class="col-25">
       <label for="username">Username</label>
@@ -206,4 +229,43 @@
   </div>
   </form>
 </div>
+
+<script type="text/javascript">
+    function checkRegister()
+    {
+        var control = document.getElementById("username");
+        if(control.value =="")
+        {
+            control.focus();
+            alert("User name can not null");
+            return false;
+        }
+
+        control = document.getElementById("password");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Password can not null");
+            return false;
+        }
+
+        control = document.getElementById("name");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Name can not null");
+            return false;
+        }
+
+        control = document.getElementById("email");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Email can not null");
+            return false;
+        }
+
+        return true;
+    }
+</script>
 </body>
