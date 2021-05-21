@@ -139,7 +139,17 @@
                 <?php
                     //Take data from database and show on the web
                     //Restaurant
-                    $sqlCoffeeTea = "SELECT * FROM drink, drinkstalltype 
+                    $sqlCoffeeTea = "SELECT drinkstalltype.drinkStallType, 	
+                    drink.postID,
+                    drink.rating,
+                    drink.address,
+                    drink.image,
+                    drink.workingTime,
+                    drink.priceRange,
+                    drink.phoneNumber,
+                    drink.foodName,
+                    account.username
+                    FROM drink, drinkstalltype, account 
                     WHERE drinkStallType = 'Coffee&Tea'
                     AND drink.postID = drinkstalltype.postID";
                     $resultCoffeeTea = mysqli_query($connection, $sqlCoffeeTea);
@@ -204,8 +214,18 @@
                     }
 
                     //Take Away
-                    $sqlTakeAway = "SELECT * FROM drink, drinkstalltype 
-                    WHERE drinkStallType = 'Takeaway' 
+                    $sqlTakeAway = "SELECT drinkstalltype.drinkStallType, 	
+                    drink.postID,
+                    drink.rating,
+                    drink.address,
+                    drink.image,
+                    drink.workingTime,
+                    drink.priceRange,
+                    drink.phoneNumber,
+                    drink.foodName,
+                    account.username
+                    FROM drink, drinkstalltype, account 
+                    WHERE drinkStallType = 'Takeaway'
                     AND drink.postID = drinkstalltype.postID";
                     $resultTakeAway = mysqli_query($connection, $sqlTakeAway);
                     if ($resultTakeAway){
@@ -269,8 +289,18 @@
                     }
 
                     //Lounge
-                    $sqlLounge = "SELECT * FROM drink, drinkstalltype 
-                    WHERE drinkStallType = 'Lounge' 
+                    $sqlLounge = "SELECT drinkstalltype.drinkStallType, 	
+                    drink.postID,
+                    drink.rating,
+                    drink.address,
+                    drink.image,
+                    drink.workingTime,
+                    drink.priceRange,
+                    drink.phoneNumber,
+                    drink.foodName,
+                    account.username
+                    FROM drink, drinkstalltype, account 
+                    WHERE drinkStallType = 'Lounge'
                     AND drink.postID = drinkstalltype.postID";
                     $resultLounge = mysqli_query($connection, $sqlLounge);
                     if ($resultLounge){

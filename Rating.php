@@ -71,6 +71,14 @@
             text-align: left;
             display: block;
         }
+        .user{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 25px;
+            color: #f5699f;
+            text-align: left;
+            display: block;
+        }
 
         .time-right {
             float: right;
@@ -202,7 +210,7 @@
                                 <div class='container' >
                                     <div class = 'w3-container'>
                                         <div class='w3-container' style='position:relative; background-color: #ffd1dc'>
-                                            <h1 class='food-and-drink-title' style='text-shadow:1px 1px 0 #444'>".$showFood['foodStallType']."</h1>
+                                            <h1 class='food-and-drink-title w3-margin-top w3-margin-bottom' style='text-shadow:1px 1px 0 #444'>".$showFood['foodStallType']."</h1>
                                         </div>
                         
                                         <!-- picture and name, rating -->
@@ -289,7 +297,7 @@
                                 <div class='container' >
                                     <div class = 'w3-container'>
                                         <div class='w3-container' style='position:relative; background-color: #ffd1dc'>
-                                            <h1 class='food-and-drink-title' style='text-shadow:1px 1px 0 #444'>".$showDrink['drinkStallType']."</h1>
+                                            <h1 class='food-and-drink-title w3-margin-top w3-margin-bottom' style='text-shadow:1px 1px 0 #444'>".$showDrink['drinkStallType']."</h1>
                                         </div>
                         
                                         <!-- picture and name, rating -->
@@ -388,8 +396,8 @@
                                 echo"
                                     <div class='container_chat'>
                                         <img src='img/user1.jpg' alt='Avatar' style='width:100%;'>
-                                            <p class = 'name'>".$showComment['name']."</p>
-                                            <p>".$showComment['content']."</p>
+                                            <p class = 'user'>".$showComment['name']."</p>
+                                            <p class = 'w3-margin-top'>".$showComment['content']."</p>
                                         <span class='time-right'>".$showComment['time']."</span>
                                     </div>
                                 ";
@@ -403,9 +411,9 @@
             <form method="POST" onSubmit="return CheckComment()">
                 <div class="container">             
                     <tr>
-                        <td><input type="text" name="txtComment" id="txtComment" placeholder="Leave your comment here"></td>
+                        <td><input type="text" style="width: 1000px" name="txtComment" id="txtComment" placeholder="Leave your comment here"></td>
                     </tr>
-                    <input type="submit" name="submit" value="Upload" class="w3-right-align w3-round-large w3-pink">
+                    <input type="submit" style="width: 100px" name="submit" value="Upload" class="w3-round-large w3-pink">
                 </div>
             </form>
 
@@ -420,6 +428,9 @@
                     return true;
                 }
             </script>
+            <div>
+                <h6 style ="text-align: center; color: #e0607b">@Developed by Lam, An, Sarah</h6>
+            </div>
         </div>
     </div>
 </body>
