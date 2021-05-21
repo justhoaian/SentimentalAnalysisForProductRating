@@ -116,6 +116,8 @@
             include_once "lib/config.php";
             include_once 'lib/DataProvider.php';
             include_once "checkID.php";
+            $totalWeightComment = (int) NULL;
+
             global $db_host, $db_username, $db_password, $db_name;
             $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
             /* check connection */
@@ -144,6 +146,11 @@
                 // Returning the result str1 + str2
                 return $str1;
             }
+
+            // function add_rating_point ($weight1, $weight2){
+            //     $weight1 = floatval($weight1 + $weight2);
+            //     return $weight1;
+            // }
             
             //add comment and word into database
             if(isset($_POST["txtComment"])){
@@ -157,6 +164,7 @@
                 username = '$username',
                 content = '$content',
                 word = NULL,
+                point = NULL,
                 time = DEFAULT";
 
                 $addComment = mysqli_query($connection, $sqlComment) or die (mysqli_connect_errno()."Cannot insert comment");;
@@ -184,18 +192,40 @@
                         $index = $index + 1;
                     }
                 }
-                $weight1Comment = $weightTotal/$index;
-
+                $weightComment = $weightTotal/$index;
                 
-                $postRating = mysqli_query($connection, "update post set rating = '$weight1Comment' where postID = $ID");
-                $foodRating = mysqli_query($connection, "update food set rating = '$weight1Comment' where postID = $ID");
-                $drinkRating = mysqli_query($connection, "update drink set rating = '$weight1Comment' where postID = $ID");
+                $UpdatePoint = mysqli_query($connection,
+                "UPDATE comment 
+                SET point = '$weightComment'
+                WHERE content = '$content'");
+
 
                 $commentID = mysqli_query($connection, "select max(commentID) from comment");
                 $getCommentID = mysqli_fetch_array($commentID);
                 $COMMENTID = $getCommentID[0];
 
                 $addPreferences = mysqli_query($connection, "insert into preferences(postID, username, commentID) values ('$ID', '$USER', '$COMMENTID')");
+                $countComment = mysqli_query($connection, "SELECT COUNT(comment.commentID) FROM comment, preferences, post WHERE comment.commentID = preferences.commentID AND post.postID = preferences.postID AND post.postID = '$ID'");
+
+                while ($array_countComment = mysqli_fetch_array($countComment)){
+                    $string_counComment = $array_countComment[0];
+                    $float_countComment = intval($string_counComment);
+                    
+                    if ($float_countComment == 0){
+                        $TotalWeight = 0;
+                    }
+                    else{
+                        $totalRating = mysqli_query($connection, "SELECT AVG(comment.point) FROM comment, preferences, post WHERE comment.commentID = preferences.commentID AND post.postID = preferences.postID AND post.postID = '$ID'");
+                        while ($array_totalRating = mysqli_fetch_array($totalRating)){
+                            $string_totalRating = $array_totalRating[0];
+                            $float_totalRating = floatval($string_totalRating);
+                        }
+                    }
+                }
+                $postRating = mysqli_query($connection, "update post set rating = '$float_totalRating' where postID = $ID");
+                $foodRating = mysqli_query($connection, "update food set rating = '$float_totalRating' where postID = $ID");
+                $drinkRating = mysqli_query($connection, "update drink set rating = '$float_totalRating' where postID = $ID");
+            
             }
             
             //Take data from database and show on the web
@@ -413,7 +443,7 @@
             <form method="POST" onSubmit="return CheckComment()">
                 <div class="container">             
                     <tr>
-                        <td><input type="text" style="width: 1000px" name="txtComment" id="txtComment" placeholder="Leave your comment here"></td>
+                        <td><input type="text" style="width: 1000px; height: 50px" name="txtComment" id="txtComment" placeholder="Leave your comment here"></td>
                     </tr>
                     <input type="submit" style="width: 100px" name="submit" value="Upload" class="w3-round-large w3-pink">
                 </div>
