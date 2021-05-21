@@ -9,10 +9,12 @@
     <title>MÚCBANG</title>
 
     <link href="CSS/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="JS/jquery.min.js"></script>
     <script src="JS/jquery.zoom.min.js"></script>
 
@@ -72,13 +74,11 @@
 
         .time-right {
             float: right;
-            color: #aaa;
+            color: #ecb0b8;
         }
 
         .container_chat {
-            border: 2px solid #dedede;
-            background-color: #f1f1f1;
-            border-radius: 5px;
+            background-color: #ffd1dc;
             padding: 10px;
             margin: 10px 0;
         }
@@ -108,7 +108,6 @@
             include_once "lib/config.php";
             include_once 'lib/DataProvider.php';
             include_once "checkID.php";
-            session_start();
             global $db_host, $db_username, $db_password, $db_name;
             $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
             /* check connection */
@@ -121,7 +120,74 @@
             $validID = checkingID($connection, $id);
             $getID = mysqli_fetch_array($validID);
             $ID = $getID["postID"];
-            $_SESSION['postID'] = $ID;
+
+            //Get the username of the user
+            $username = strval($_GET['user']);
+            $validUsername = checkingUser($connection, $username);
+            $getUsername = mysqli_fetch_array($validUsername);
+            $USER = $getUsername["username"];
+
+            function append_string ($str1, $str2) {
+                // Using Concatenation assignment
+                // operator (.=)
+                $str1 .= $str2;
+                $str1 .= ", ";
+                
+                // Returning the result str1 + str2
+                return $str1;
+            }
+            
+            //add comment and word into database
+            if(isset($_POST["txtComment"])){
+                $content = $_POST["txtComment"];
+                $validWord = (string) NULL;
+                $weightTotal = 0;
+                $index = 0;
+
+                $sqlComment = "INSERT into comment SET
+                commentID = NULL,
+                username = '$username',
+                content = '$content',
+                word = NULL,
+                time = DEFAULT";
+
+                $addComment = mysqli_query($connection, $sqlComment) or die (mysqli_connect_errno()."Cannot insert comment");;
+                $sqlSentementalWordFromSentimentalWord = "SELECT word FROM sentimentalword";
+                $resultSentementalWordFromSentimentalWord = mysqli_query($connection, $sqlSentementalWordFromSentimentalWord);
+
+                while($arraySentimetalWord = mysqli_fetch_array($resultSentementalWordFromSentimentalWord)){
+                    $sentimentalWord = $arraySentimetalWord["word"];
+                    $HASsentimentalWordFromComment = strpos($content, $sentimentalWord);
+
+                    if ($HASsentimentalWordFromComment !== false){
+                        $validWord = append_string($validWord, $sentimentalWord);
+                        $sqlComment = "UPDATE comment 
+                        SET word = '$validWord'
+                        WHERE content = '$content'";
+                        $addComment = mysqli_query($connection, $sqlComment) or die (mysqli_connect_errno()."Cannot insert word");;
+                        
+                        $weightOfWord = mysqli_query($connection, "select weight from sentimentalword where word = '$sentimentalWord'");
+
+                        while ($array_weightOfEachWord = mysqli_fetch_array($weightOfWord)){
+                            $string_weightOfEachWord = $array_weightOfEachWord['weight']; 
+                            $float_weightOfEachWord = floatval($string_weightOfEachWord);
+                            $weightTotal = floatval($weightTotal + $float_weightOfEachWord);
+                        }
+                        $index = $index + 1;
+                    }
+                }
+                $weightComment = $weightTotal/$index;
+                $postRating = mysqli_query($connection, "update post set rating = '$weightComment' where postID = $ID");
+                $foodRating = mysqli_query($connection, "update food set rating = '$weightComment' where postID = $ID");
+                $drinkRating = mysqli_query($connection, "update drink set rating = '$weightComment' where postID = $ID");
+
+                $commentID = mysqli_query($connection, "select max(commentID) from comment");
+                $getCommentID = mysqli_fetch_array($commentID);
+                $COMMENTID = $getCommentID[0];
+
+                $addPreferences = mysqli_query($connection, "insert into preferences(postID, username, commentID) values ('$ID', '$USER', '$COMMENTID')");
+            }
+            
             //Take data from database and show on the web
             if ($ID){
                 //If food, show detail of Food
@@ -172,7 +238,7 @@
                         
                                                     <div class='w3-card-4 w3-section'>
                                                         <div class='w3-container w3-white'>
-                                                            <i class='fas fa-map-marker-alt w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
+                                                            <i class='glyphicon glyphicon-earphone w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
                                                             <p class='title'>Phone Number</p>
                                                         </div>
                         
@@ -183,7 +249,7 @@
                         
                                                     <div class='w3-card-4'>
                                                         <div class='w3-container' style='background-color: #ffd1dc'>
-                                                            <i class='fas fa-map-marker-alt w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
+                                                            <i class='fas fa-dollar-sign w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
                                                             <p class='title' style='color: white'>Price</p>
                                                         </div>
                         
@@ -194,7 +260,7 @@
                         
                                                     <div class='w3-card-4 w3-section'>
                                                         <div class='w3-container w3-white'>
-                                                            <i class='fas fa-map-marker-alt w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
+                                                            <i class='far fa-clock w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
                                                             <p class='title'>Working Time</p>
                                                         </div>
                         
@@ -259,7 +325,7 @@
                         
                                                     <div class='w3-card-4 w3-section'>
                                                         <div class='w3-container w3-white'>
-                                                            <i class='fas fa-map-marker-alt w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
+                                                            <i class='glyphicon glyphicon-earphone w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
                                                             <p class='title'>Phone Number</p>
                                                         </div>
                         
@@ -270,7 +336,7 @@
                         
                                                     <div class='w3-card-4'>
                                                         <div class='w3-container' style='background-color: #ffd1dc'>
-                                                            <i class='fas fa-map-marker-alt w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
+                                                            <i class='fas fa-dollar-sign w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
                                                             <p class='title' style='color: white'>Price</p>
                                                         </div>
                         
@@ -281,7 +347,7 @@
                         
                                                     <div class='w3-card-4 w3-section'>
                                                         <div class='w3-container w3-white'>
-                                                            <i class='fas fa-map-marker-alt w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
+                                                            <i class='far fa-clock w3-margin-top w3-margin-bottom' style='font-size:38px; color:#e0607b'></i>
                                                             <p class='title'>Working Time</p>
                                                         </div>
                         
@@ -298,36 +364,63 @@
                         }
                     }
                 }
-            
-            else {
-                echo"Urhh ... WUT?";
-            }
-            }
-
-            $sqlComment = "SELECT comment.content, comment.time, account.name
-            FROM post, preferences, comment, account
-            WHERE preferences.postID = post.postID
-            AND	preferences.username = account.username
-            AND preferences.commentID = comment.commentID";
-
-            $resultComment = mysqli_query($connection, $sqlComment) or die(mysqli_connect_errno()."wooooooo");;
-            if ($resultComment){
-                if(mysqli_num_rows($resultComment) > 0){
-                    while ($showComment = mysqli_fetch_array($resultComment)){
-                        echo"
-                            <div class='container_chat'>
-                                <img src='img/user1.jpg' alt='Avatar' style='width:100%;'>
-                                    <p class = 'name'></p>
-                                    <p>".$showComment['content']."</p>
-                                <span class='time-right'>".$showComment['content']."</span>
-                            </div>
-                        ";
-                    }
+                else {
+                    echo"Urhh ... WUT?";
                 }
             }
-         
-        include ('pages/exCommentBox.php'); ?>
-        
+        ?>
+        <!-- Show comment -->
+        <div class='container' >
+            <div class = 'w3-container'>
+                <?php
+
+                    $sqlComment = "SELECT comment.content, comment.time, account.name
+                    FROM post, preferences, comment, account
+                    WHERE preferences.postID = post.postID
+                    AND post.postID = '$ID'
+                    AND	preferences.username = account.username
+                    AND preferences.commentID = comment.commentID";
+
+                    $resultComment = mysqli_query($connection, $sqlComment) or die(mysqli_connect_errno()."wooooooo");;
+                    if ($resultComment){
+                        if(mysqli_num_rows($resultComment) > 0){
+                            while ($showComment = mysqli_fetch_array($resultComment)){
+                                echo"
+                                    <div class='container_chat'>
+                                        <img src='img/user1.jpg' alt='Avatar' style='width:100%;'>
+                                            <p class = 'name'>".$showComment['name']."</p>
+                                            <p>".$showComment['content']."</p>
+                                        <span class='time-right'>".$showComment['time']."</span>
+                                    </div>
+                                ";
+                            }
+                        }
+                    }
+                ?>
+            </div>
+
+            <!-- excommentbox -->
+            <form method="POST" onSubmit="return CheckComment()">
+                <div class="container">             
+                    <tr>
+                        <td><input type="text" name="txtComment" id="txtComment" placeholder="Leave your comment here"></td>
+                    </tr>
+                    <input type="submit" name="submit" value="Upload" class="w3-right-align w3-round-large w3-pink">
+                </div>
+            </form>
+
+            <script type="text/javascript">
+                function CheckComment(){
+                    if(document.getElementById("txtComment").value == "")
+                    {
+                        document.getElementById("txtComment").focus();
+                        alert("Comment cannot be null");
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+        </div>
     </div>
 </body>
 </html>
