@@ -1,10 +1,13 @@
+
 <div class="container">
     <!--Header box-->
     <div class="container">
         <table>
             <tr style = "width: 100%">
                 <th>
+                <a href="index.php">
                     <img src="img/MucBanglogo.png" alt="image not found" class="logo">
+                </a>
                     <img src="img/MucBangslogan.png" alt="image not found" class="logo">
                 </th>
 
@@ -13,7 +16,7 @@
                 <th class ="w3-right-align">
                 
                     <?php
-                    if(isset($_SESSION['username']))
+                    if(isset($_SESSION["username"]))
                     {
                         include ("modules/mAccountInfor.php");
                     }
@@ -38,8 +41,8 @@
                 <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Food</button></a>
             <a href="Drink.php">
                 <button href="#" class="w3-bar-item w3-button w3-mobile w3-round-large">Drinks</button></a>
-            <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
-            <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
+            <a href="Query.php">
+                <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Query</button></a>
         </div>
     </div>
 </div>
