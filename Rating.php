@@ -108,18 +108,20 @@
             include_once "lib/config.php";
             include_once 'lib/DataProvider.php';
             include_once "checkID.php";
+            session_start();
             global $db_host, $db_username, $db_password, $db_name;
             $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
             /* check connection */
             if ($connection->connect_error) {      
                 die("Failed to connect: " . $connection->connect_error);
-              }
+            }
             
             //Get the ID of the Stall
             $id = intval($_GET['id']);
             $validID = checkingID($connection, $id);
             $getID = mysqli_fetch_array($validID);
             $ID = $getID["postID"];
+            $_SESSION['postID'] = $ID;
             //Take data from database and show on the web
             if ($ID){
                 //If food, show detail of Food
