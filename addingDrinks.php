@@ -156,7 +156,7 @@ p
 </div>
 
 <div class="formcontainer">
-  <form method = "post" action="addingDrinks.php">
+  <form method = "post" action="addingDrinks.php" onSubmit = "return checkNull()">
   <div class="row">
     <div class="col-25">
       <label for="name">Name</label>
@@ -221,5 +221,61 @@ p
     <input type="submit" value="Submit">
   </form>
 </div>
+
+<script type="text/javascript">
+    function checkNull()
+    {
+        var control = document.getElementById("name");
+        if(control.value =="")
+        {
+            control.focus();
+            alert("Name can not null");
+            return false;
+        }
+
+        control = document.getElementById("address");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Address can not null");
+            return false;
+        }
+
+        control = document.getElementById("image");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Please upload image");
+            return false;
+        }
+
+        control = document.getElementById("workingtime");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Working Time can not null");
+            return false;
+        }
+
+        control = document.getElementById("pricerange");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Price Range can not null");
+            return false;
+        }
+
+        control = document.getElementById("phonenumber");
+        if(control.value == "")
+        {
+            control.focus();
+            alert("Phone Number can not null");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
 </body>
 

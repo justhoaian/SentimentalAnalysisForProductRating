@@ -4,7 +4,9 @@
         <table>
             <tr style = "width: 100%">
                 <th>
+                <a href="AdminIndex.php">
                     <img src="img/MucBanglogo.png" alt="image not found" class="logo">
+                </a>
                     <img src="img/MucBangslogan.png" alt="image not found" class="logo">
                 </th>
 
@@ -47,8 +49,8 @@
                             <button href="#" class="w3-bar-item w3-button">Adding Drinks</button></a>
                         </div>
                     </div>
-                <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Go</button>
-                <input type="text" class="w3-bar-item w3-input w3-mobile w3-right w3-round-large" placeholder="Search..">
+                <a href="AdminQuery.php">
+                    <button href="#" class="w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large">Query</button></a>
             </div>
         </div>
 </div>
