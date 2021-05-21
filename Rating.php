@@ -184,10 +184,12 @@
                         $index = $index + 1;
                     }
                 }
-                $weightComment = $weightTotal/$index;
-                $postRating = mysqli_query($connection, "update post set rating = '$weightComment' where postID = $ID");
-                $foodRating = mysqli_query($connection, "update food set rating = '$weightComment' where postID = $ID");
-                $drinkRating = mysqli_query($connection, "update drink set rating = '$weightComment' where postID = $ID");
+                $weight1Comment = $weightTotal/$index;
+
+                
+                $postRating = mysqli_query($connection, "update post set rating = '$weight1Comment' where postID = $ID");
+                $foodRating = mysqli_query($connection, "update food set rating = '$weight1Comment' where postID = $ID");
+                $drinkRating = mysqli_query($connection, "update drink set rating = '$weight1Comment' where postID = $ID");
 
                 $commentID = mysqli_query($connection, "select max(commentID) from comment");
                 $getCommentID = mysqli_fetch_array($commentID);

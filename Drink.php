@@ -147,7 +147,7 @@
                     drink.workingTime,
                     drink.priceRange,
                     drink.phoneNumber,
-                    drink.foodName,
+                    drink.drinkName,
                     account.username
                     FROM drink, drinkstalltype, account 
                     WHERE drinkStallType = 'Coffee&Tea'
@@ -222,7 +222,7 @@
                     drink.workingTime,
                     drink.priceRange,
                     drink.phoneNumber,
-                    drink.foodName,
+                    drink.drinkName,
                     account.username
                     FROM drink, drinkstalltype, account 
                     WHERE drinkStallType = 'Takeaway'
@@ -297,7 +297,7 @@
                     drink.workingTime,
                     drink.priceRange,
                     drink.phoneNumber,
-                    drink.foodName,
+                    drink.drinkName,
                     account.username
                     FROM drink, drinkstalltype, account 
                     WHERE drinkStallType = 'Lounge'
