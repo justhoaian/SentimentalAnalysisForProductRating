@@ -1,3 +1,15 @@
+<?php
+    include_once "lib/config.php";
+    include_once ('lib/DataProvider.php');
+    include_once "checkID.php";
+
+    global $db_host, $db_username, $db_password, $db_name;
+    $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+    /* check connection */
+    if ($connection->connect_error) {      
+        die("Failed to connect: " . $connection->connect_error);
+      }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -125,17 +137,7 @@
             <!--Restaurant-->
             <div class="w3-col m9 w3-container w3-row-padding w3-margin-top w3-round-large" style ="background-color: #ffdbe1">
                 <?php
-                    include_once "lib/config.php";
-                    include_once ('lib/DataProvider.php');
-                    global $db_host, $db_username, $db_password, $db_name;
-                
-                    $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-                    /* check connection */
-                    if ($connection->connect_error) {      
-                        die("Failed to connect: " . $connection->connect_error);
-                      }
                     //Take data from database and show on the web
-
                     //Restaurant
                     $sqlRestaurant = "SELECT * FROM food, foodstalltype 
                     WHERE foodStallType = 'Restaurant'
@@ -168,11 +170,11 @@
                                                 </div>
                             
                                                 <div class='w3-display-bottomleft w3-display-hover w3-large w3-text-white'>
-                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>".$row['rating']." Rating</div>
+                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>Rating point: ".$row['rating']."</div>
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='Rating.php'><button type='button' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +194,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='Rating.php'><button class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -233,11 +235,11 @@
                                                 </div>
                             
                                                 <div class='w3-display-bottomleft w3-display-hover w3-large w3-text-white'>
-                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>".$row['rating']." Rating</div>
+                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>Rating point: ".$row['rating']."</div>
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='Rating.php'><button type='button' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -257,7 +259,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='Rating.php'><button class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -298,11 +300,11 @@
                                                 </div>
                             
                                                 <div class='w3-display-bottomleft w3-display-hover w3-large w3-text-white'>
-                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>".$row['rating']." Rating</div>
+                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>Rating point: ".$row['rating']."</div>
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='Rating.php'><button type='button' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -322,7 +324,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='Rating.php'><button class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
