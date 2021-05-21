@@ -79,7 +79,10 @@
             
             $content = $_POST["txtComment"];
             $validWord = (string) NULL;
+            $weightTotal = 0;
+            $index = 0;
 
+            // $username = $_SESSION['username'];
             $sqlComment = "INSERT into comment SET
             commentID = NULL,
             username = 'hehe',
@@ -102,6 +105,13 @@
                     WHERE content = '$content'";
                     $addComment = mysqli_query($connection, $sqlComment) or die (mysqli_connect_errno()."Cannot insert word");;
                     
+                    $weightOfEachWord = mysqli_query($connection, "select weight from sentimentalword where word = '$sentimentalWord'");
+                    while ($weightOfEachWord = $weightOfEachWord->mysqli_fetch_array()){
+                        $weightOfEachWord = intval($weightOfEachWord);
+                        $weightTotal = $weightTotal + $weightOfEachWord;
+                        $index = $index + 1;
+                    }
+
                     if($addComment){
                         $result = "succeed";
                     }
@@ -110,6 +120,11 @@
                     }
                 }
             }
+ 
+            $weightComment = $weightTotal/$index;
+            $postRating = mysqli_query($connection, "update post set rating = '$weightComment' where postID = $ID");
+            $commentID = mysqli_query($connection, "select max(commentID) from comment");
+            // $addPreferences = mysqli_query($connection, "insert into preferences(postID, username, commentID) values ('$postID', '$username', '$commentID')");
 
             if($result){
                 echo"
@@ -118,7 +133,7 @@
                     </script>
                 ";
             }
-            DataProvider::ChangeURL("Rating.php");
+            // DataProvider::ChangeURL("Rating.php");
         }
     ?>
 </body>
