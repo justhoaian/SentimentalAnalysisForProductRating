@@ -8,7 +8,12 @@
     /* check connection */
     if ($connection->connect_error) {      
         die("Failed to connect: " . $connection->connect_error);
-      }
+    }
+
+    $username = strval($_GET['user']);
+    $validUsername = checkingUser($connection, $username);
+    $getUsername = mysqli_fetch_array($validUsername);
+    $USER = $getUsername["username"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +92,58 @@
 </head>
 
 <body>  
-    <?php include ('modules/mHeader.php'); ?>
+    <div class="container">
+        <!--Header box-->
+        <div class="container">
+            <table>
+                <tr style = "width: 100%">
+                    <th>
+                    <a href="index.php">
+                        <img src="img/MucBanglogo.png" alt="image not found" class="logo">
+                    </a>
+                        <img src="img/MucBangslogan.png" alt="image not found" class="logo">
+                    </th>
+
+                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+
+                    <th class ="w3-right-align">
+                    
+                        <?php
+                        if(isset($_SESSION["username"]))
+                        {
+                            include ("modules/mAccountInfor.php");
+                        }
+                        else
+                        {
+                            include ("modules/mAccountLogin.php");
+                            include ("modules/mAccountSignUp.php");
+                        }
+                        ?>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+
+        <!--Nav bar-->
+        <?php
+
+            echo"
+            <div class='w3-container'>
+                <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                    <a href='index.php'>
+                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                    <a href='./Food.php?user=".$USER."'>
+                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                    <a href='./Drink.php?user=".$USER."'>
+                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
+                    <a href='Query.php'>
+                        <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                </div>
+            </div>
+            ";
+        ?>
+    </div>
 
     <div class="container" >
         <div class = "w3-container">
@@ -151,6 +207,7 @@
                     account.username
                     FROM food, foodstalltype, account 
                     WHERE foodStallType = 'Restaurant'
+                    AND account.username = '$USER'
                     AND food.postID = foodstalltype.postID";
                     $resultRestaurant = mysqli_query($connection, $sqlRestaurant);
                     if ($resultRestaurant){
@@ -226,6 +283,7 @@
                     account.username
                     FROM food, foodstalltype, account 
                     WHERE foodStallType = 'Buffet'
+                    AND account.username = '$USER'
                     AND food.postID = foodstalltype.postID";
                     $resultBuffet = mysqli_query($connection, $sqlBuffet);
                     if ($resultBuffet){
@@ -301,6 +359,7 @@
                     account.username
                     FROM food, foodstalltype, account 
                     WHERE foodStallType = 'Street Food'
+                    AND account.username = '$USER'
                     AND food.postID = foodstalltype.postID";
                     $resultStreetFood = mysqli_query($connection, $sqlStreetFood);
                     if ($resultStreetFood){
