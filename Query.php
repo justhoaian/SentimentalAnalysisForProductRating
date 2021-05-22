@@ -48,7 +48,75 @@ p
 </head>
 
 <body>  
-    <?php include ('modules/mHeader.php'); ?>
+    <div class="container">
+        <!--Header box-->
+        <div class="container">
+            <table>
+                <tr style = "width: 100%">
+                    <th>
+                    <a href="index.php">
+                        <img src="img/MucBanglogo.png" alt="image not found" class="logo">
+                    </a>
+                        <img src="img/MucBangslogan.png" alt="image not found" class="logo">
+                    </th>
+
+                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+
+                    <th class ="w3-right-align">
+                    
+                        <?php
+                        if(isset($_SESSION["username"]))
+                        {
+                            include ("modules/mAccountInfor.php");
+                        }
+                        else
+                        {
+                            include ("modules/mAccountLogin.php");
+                            include ("modules/mAccountSignUp.php");
+                        }
+                        ?>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+
+        <!--Nav bar-->
+        <?php
+            include_once "lib/config.php";
+            include_once "lib/DataProvider.php";
+            include_once "checkID.php";
+
+            global $db_host, $db_username, $db_password, $db_name;
+        
+            $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+            /* check connection */
+            if ($connection->connect_error) {      
+                die("Failed to connect: " . $connection->connect_error);
+            }
+
+            $username = strval($_GET['user']);
+            $validUsername = checkingUser($connection, $username);
+            $getUsername = mysqli_fetch_array($validUsername);
+            $USER = $getUsername["username"];
+
+            echo"
+            <div class='w3-container'>
+                <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                    <a href='index.php'>
+                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                    <a href='./Food.php?user=".$USER."'>
+                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                    <a href='./Drink.php?user=".$USER."'>
+                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
+                    <a href='./Query.php?user=".$USER."'>
+                        <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                </div>
+            </div>
+            ";
+        ?>
+    </div>
+    
     <br>
     <div id = query>
     <table style="margin-left:auto;margin-right:auto;" width="370" height="20">
@@ -69,15 +137,6 @@ p
 <table style="margin-left: auto, margin-right: auto, width:100%" >  
     <tr>
             <?php
-                 include_once "lib/config.php";
-                 include_once "lib/DataProvider.php";
-                 global $db_host, $db_username, $db_password, $db_name;
-             
-                 $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-                 /* check connection */
-                 if ($connection->connect_error) {      
-                     die("Failed to connect: " . $connection->connect_error);
-                   }
                 
                 if(isset($_POST["query"]) && ($_POST["query"] != "")){
                     $sql ="";
