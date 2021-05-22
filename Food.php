@@ -137,7 +137,7 @@
                         <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
                     <a href='./Drink.php?user=".$USER."'>
                         <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
-                    <a href='Query.php'>
+                    <a href='./Query.php?user=".$USER."'>
                         <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
                 </div>
             </div>
