@@ -215,7 +215,7 @@ p
                 }
             ?>
         <tr>
-            <p><center><b>ReSult of Query: <?php if(isset($_POST["query"]) && ($_POST["query"] != "")){ echo $sql; }?></b></center></p>
+            <p><center><b>Result of Query: <?php if(isset($_POST["query"]) && ($_POST["query"] != "")){ echo $sql; }?></b></center></p>
         </tr>
     </tr>
 </table>
