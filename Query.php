@@ -96,17 +96,6 @@ p
             }
 
             if(isset($_GET["name"]) && isset($_SESSION["username"])){
-                $name = strval($_GET['name']);
-                $username = strval($_SESSION['username']);
-
-                $validName = checkingName($connection, $name);
-                $validUsername = checkingUser($connection, $username);
-
-                $getName = mysqli_fetch_array($validName);
-                $getUsername = mysqli_fetch_array($validUsername);
-                
-                $NAME = $getName["name"];
-                $USER = $getUsername["username"];
                 
                     echo"
                          <script type='text/javascript'>
@@ -117,13 +106,13 @@ p
                 echo"
                     <div class='w3-container'>
                         <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
-                            <a href='index.php?name=".$NAME."'>
+                            <a href='index.php?name=".$_SESSION["name"]."'>
                                 <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
-                            <a href='Food.php?name=".$NAME."'>
+                            <a href='Food.php?name=".$_SESSION["name"]."'>
                                 <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
-                            <a href='Drink.php?name=".$NAME."'>
+                            <a href='Drink.php?name=".$_SESSION["name"]."'>
                                 <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
-                            <a href='Query.php?name=".$NAME."'>
+                            <a href='Query.php?name=".$_SESSION["name"]."'>
                                 <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
                         </div>
                     </div>
