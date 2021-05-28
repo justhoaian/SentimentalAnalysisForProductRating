@@ -9,11 +9,7 @@
     if ($connection->connect_error) {      
         die("Failed to connect: " . $connection->connect_error);
     }
-
-    $username = strval($_GET['user']);
-    $validUsername = checkingUser($connection, $username);
-    $getUsername = mysqli_fetch_array($validUsername);
-    $USER = $getUsername["username"];
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,23 +123,51 @@
 
         <!--Nav bar-->
         <?php
+            if(isset($_SESSION["name"]) && isset($_SESSION["username"])){
+                $name = strval($_SESSION['name']);
+                $username = strval($_SESSION['username']);
+                $validName = checkingName($connection, $name);
+                $validUsername = checkingUser($connection, $username);
+                $getName = mysqli_fetch_array($validName);
+                $getUsername = mysqli_fetch_array($validUsername);
+                
+                $NAME = $getName["name"];
+                $USER = $getUsername["username"];
+                
+                echo"
+                    <div class='w3-container'>
+                        <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                            <a href='index.php?name=".$NAME."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                            <a href='Food.php?name=".$NAME."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                            <a href='Drink.php?name=".$NAME."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
+                            <a href='Query.php?name=".$NAME."'>
+                                <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                        </div>
+                    </div>
+                ";
+            }
 
-            echo"
-            <div class='w3-container'>
-                <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
-                    <a href='index.php'>
-                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
-                    <a href='./Food.php?user=".$USER."'>
-                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
-                    <a href='./Drink.php?user=".$USER."'>
-                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
-                    <a href='./Query.php?user=".$USER."'>
-                        <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
-                </div>
-            </div>
-            ";
+            else{
+                $USER = "admin";
+                echo"
+                    <div class='w3-container'>
+                        <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                            <a href='index.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                            <a href='Food.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                            <a href='Drink.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
+                            <a href='Query.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                        </div>
+                    </div>
+                ";
+            }
         ?>
-    </div>
 
     <div class="container" >
         <div class = "w3-container">
@@ -203,13 +227,15 @@
                     drink.workingTime,
                     drink.priceRange,
                     drink.phoneNumber,
-                    drink.drinkName,
-                    account.username
-                    FROM drink, drinkstalltype, account 
+                    drink.drinkName
+                    FROM drink, drinkstalltype
                     WHERE drinkStallType = 'Coffee&Tea'
-		            AND account.username = '$USER'
                     AND drink.postID = drinkstalltype.postID";
                     $resultCoffeeTea = mysqli_query($connection, $sqlCoffeeTea);
+
+                    $sqlAccount = "SELECT username FROM account WHERE username = '$USER'";
+                    $resultAccount = mysqli_query($connection, $sqlAccount);
+
                     if ($resultCoffeeTea){
                         if(mysqli_num_rows($resultCoffeeTea) > 0){
                             while($row = mysqli_fetch_array($resultCoffeeTea)){
@@ -241,7 +267,7 @@
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='./Rating.php?id=".$row['postID']."&user=".$row['username']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -261,7 +287,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='./Rating.php?id=".$row['postID']."&user=".$row['username']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -279,11 +305,9 @@
                     drink.workingTime,
                     drink.priceRange,
                     drink.phoneNumber,
-                    drink.drinkName,
-                    account.username
+                    drink.drinkName
                     FROM drink, drinkstalltype, account 
                     WHERE drinkStallType = 'Takeaway'
-		            AND account.username = '$USER'
                     AND drink.postID = drinkstalltype.postID";
                     $resultTakeAway = mysqli_query($connection, $sqlTakeAway);
                     if ($resultTakeAway){
@@ -317,7 +341,7 @@
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='./Rating.php?id=".$row['postID']."&user=".$row['username']."'><button type='submit' name = 'submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -337,7 +361,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='./Rating.php?id=".$row['postID']."&user=".$row['username']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -355,11 +379,9 @@
                     drink.workingTime,
                     drink.priceRange,
                     drink.phoneNumber,
-                    drink.drinkName,
-                    account.username
-                    FROM drink, drinkstalltype, account 
+                    drink.drinkName
+                    FROM drink, drinkstalltype 
                     WHERE drinkStallType = 'Lounge'
-		            AND account.username = '$USER'
                     AND drink.postID = drinkstalltype.postID";
                     $resultLounge = mysqli_query($connection, $sqlLounge);
                     if ($resultLounge){
@@ -393,7 +415,7 @@
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='./Rating.php?id=".$row['postID']."&user=".$row['username']."'><button  type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button  type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -413,7 +435,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='./Rating.php?id=".$row['postID']."&user=".$row['username']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>

@@ -18,4 +18,14 @@
 
         return $resultUser;
     }
+
+    function checkingName($connection ,$name){
+        $sqlName = 
+        "SELECT name 
+        FROM account 
+        WHERE name = '$name'";
+        $resultName = mysqli_query($connection, $sqlName) or die(mysqli_connect_errno()."Query Name Doesnt run");
+
+        return $resultName;
+    }
 ?>

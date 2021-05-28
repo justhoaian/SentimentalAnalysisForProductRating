@@ -9,7 +9,7 @@
     <?php
         echo "Hello, ".$_SESSION['name']." | ";
     ?>
-    <a href="index.php?a=11">
+    <a href="function/logout.php">
         <button>Logout</button>
     </a> 
-</div> 
+</div>
