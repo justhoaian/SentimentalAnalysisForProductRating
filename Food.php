@@ -123,9 +123,16 @@
 
         <!--Nav bar-->
         <?php
-            if(isset($_SESSION["name"]) && isset($_SESSION["username"])){
-                $USER = $_SESSION["username"];
-                echo"
+                if(isset($_SESSION["name"]) && isset($_SESSION["username"])){
+                    if($_SESSION["username"] != 'admin'){
+                        // echo"
+                        //      <script type='text/javascript'>
+                        //      alert('".$username."');
+                        //      </script>
+                        //  ";
+                    
+
+                    echo"
                     <div class='w3-container'>
                         <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
                             <a href='index.php?name=".$_SESSION["name"]."'>
@@ -139,27 +146,37 @@
                         </div>
                     </div>
                 ";
-            }
 
-            else{
-                $USER = "admin";
-                echo"
+                }
+                        
+
+                else{
+                    echo"
                     <div class='w3-container'>
-                        <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
-                            <a href='index.php'>
-                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
-                            <a href='Food.php'>
-                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
-                            <a href='Drink.php'>
-                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
-                            <a href='Query.php'>
-                                <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
-                        </div>
+                    <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                        <a href='AdminIndex.php'>
+                            <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                        <a href='AdminFood.php'>
+                            <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                        <a href='AdminDrink.php' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</a>
+                            <div class = 'w3-dropdown-hover'>
+                            <button class = 'w3-bar-item w3-button w3-mobile w3-round-large'>Admin</button>
+                                <div class = 'w3-dropdown-content w3-bar-block w3-card-4'>
+                                <a href='addingFood.php'>
+                                    <button href='#' class='w3-bar-item w3-button'>Adding Food</button></a>
+                                <a href='addingDrinks.php'>
+                                    <button href='#' class='w3-bar-item w3-button'>Adding Drinks</button></a>
+                                </div>
+                            </div>
+                        <a href='AdminQuery.php'>
+                            <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
                     </div>
-                ";
+                </div>
+                    ";
+                }
             }
-        ?>
-    </div>
+            ?>
+        </div>
 
     <div class="container" >
         <div class = "w3-container">

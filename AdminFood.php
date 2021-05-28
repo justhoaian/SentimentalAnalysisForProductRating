@@ -1,3 +1,16 @@
+<?php
+    include_once "lib/config.php";
+    include_once ('lib/DataProvider.php');
+    include_once "checkID.php";
+
+    global $db_host, $db_username, $db_password, $db_name;
+    $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+    /* check connection */
+    if ($connection->connect_error) {      
+        die("Failed to connect: " . $connection->connect_error);
+    }
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +88,97 @@
 </head>
 
 <body>  
-    <?php include ('modules/mAdminHeader.php'); ?>
+    <div class="container">
+        <!--Header box-->
+        <div class="container">
+            <table>
+                <tr style = "width: 100%">
+                    <th>
+                    <a href="index.php">
+                        <img src="img/MucBanglogo.png" alt="image not found" class="logo">
+                    </a>
+                        <img src="img/MucBangslogan.png" alt="image not found" class="logo">
+                    </th>
+
+                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+
+                    <th class ="w3-right-align">
+                    
+                        <?php
+                        if(isset($_SESSION["username"]))
+                        {
+                            include ("modules/mAccountInfor.php");
+                        }
+                        else
+                        {
+                            include ("modules/mAccountLogin.php");
+                            include ("modules/mAccountSignUp.php");
+                        }
+                        ?>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+
+        <!--Nav bar-->
+        <?php
+                if(isset($_SESSION["name"]) && isset($_SESSION["username"])){
+                    if($_SESSION["username"] != 'admin'){
+                        $USER = $_SESSION["username"];
+                        // echo"
+                        //      <script type='text/javascript'>
+                        //      alert('".$username."');
+                        //      </script>
+                        //  ";
+                    
+
+                    echo"
+                    <div class='w3-container'>
+                        <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                            <a href='index.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                            <a href='Food.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                            <a href='Drink.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
+                            <a href='Query.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                        </div>
+                    </div>
+                ";
+
+                }
+                        
+
+                else{
+                    $USER = "admin";
+                    echo"
+                    <div class='w3-container'>
+                    <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                        <a href='AdminIndex.php'>
+                            <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                        <a href='AdminFood.php'>
+                            <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                        <a href='AdminDrink.php' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</a>
+                            <div class = 'w3-dropdown-hover'>
+                            <button class = 'w3-bar-item w3-button w3-mobile w3-round-large'>Admin</button>
+                                <div class = 'w3-dropdown-content w3-bar-block w3-card-4'>
+                                <a href='addingFood.php'>
+                                    <button href='#' class='w3-bar-item w3-button'>Adding Food</button></a>
+                                <a href='addingDrinks.php'>
+                                    <button href='#' class='w3-bar-item w3-button'>Adding Drinks</button></a>
+                                </div>
+                            </div>
+                        <a href='AdminQuery.php'>
+                            <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                    </div>
+                </div>
+                    ";
+                }
+            }
+            ?>
+    </div>
 
     <div class="container" >
         <div class = "w3-container">
@@ -125,23 +228,26 @@
             <!--Restaurant-->
             <div class="w3-col m9 w3-container w3-row-padding w3-margin-top w3-round-large" style ="background-color: #ffdbe1">
                 <?php
-                    include_once "lib/config.php";
-                    include_once ('lib/DataProvider.php');
-                    global $db_host, $db_username, $db_password, $db_name;
-                
-                    $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-                    /* check connection */
-                    if ($connection->connect_error) {      
-                        die("Failed to connect: " . $connection->connect_error);
-                      }
                     //Take data from database and show on the web
-
                     //Restaurant
-                    $sqlRestaurant = "SELECT * FROM food, foodstalltype 
+                    $sqlRestaurant = "SELECT foodstalltype.foodStallType, 	
+                    food.postID,
+                    food.rating,
+                    food.address,
+                    food.image,
+                    food.workingTime,
+                    food.priceRange,
+                    food.phoneNumber,
+                    food.foodName
+                    FROM food, foodstalltype 
                     WHERE foodStallType = 'Restaurant'
                     AND food.postID = foodstalltype.postID";
                     $resultRestaurant = mysqli_query($connection, $sqlRestaurant);
-                    if ($resultRestaurant){
+
+                    $sqlAccount = "SELECT username FROM account WHERE username = '$USER'";
+                    $resultAccount = mysqli_query($connection, $sqlAccount);
+
+                    if ($resultRestaurant && $resultAccount){
                         if(mysqli_num_rows($resultRestaurant) > 0){
                             while($row = mysqli_fetch_array($resultRestaurant)){
                                 echo"
@@ -168,17 +274,17 @@
                                                 </div>
                             
                                                 <div class='w3-display-bottomleft w3-display-hover w3-large w3-text-white'>
-                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>".$row['rating']." Rating</div>
+                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>Rating point: ".$row['rating']."</div>
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='Rating.php'><button type='button' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
                                         
                             
-                                    <!--Information Description-->
+                                        <!--Information Description-->
                                         <div class='w3-half w3-margin-bottom' style ='background-color: #ffdbe1'>
                                             <div class='w3-container'>
                                                 <h3>".$row['foodName']."</h3>
@@ -192,7 +298,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='Rating.php'><button class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -202,8 +308,17 @@
                     }
 
                     //Buffet
-                    $sqlBuffet = "SELECT * FROM food, foodstalltype 
-                    WHERE foodStallType = 'Buffet' 
+                    $sqlBuffet = "SELECT foodstalltype.foodStallType, 	
+                    food.postID,
+                    food.rating,
+                    food.address,
+                    food.image,
+                    food.workingTime,
+                    food.priceRange,
+                    food.phoneNumber,
+                    food.foodName
+                    FROM food, foodstalltype 
+                    WHERE foodStallType = 'Buffet'
                     AND food.postID = foodstalltype.postID";
                     $resultBuffet = mysqli_query($connection, $sqlBuffet);
                     if ($resultBuffet){
@@ -233,11 +348,11 @@
                                                 </div>
                             
                                                 <div class='w3-display-bottomleft w3-display-hover w3-large w3-text-white'>
-                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>".$row['rating']." Rating</div>
+                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>Rating point: ".$row['rating']."</div>
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='Rating.php'><button type='button' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -257,7 +372,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='Rating.php'><button class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -267,8 +382,17 @@
                     }
 
                     //Street Food
-                    $sqlStreetFood = "SELECT * FROM food, foodstalltype 
-                    WHERE foodStallType = 'Street Food' 
+                    $sqlStreetFood = "SELECT foodstalltype.foodStallType, 	
+                    food.postID,
+                    food.rating,
+                    food.address,
+                    food.image,
+                    food.workingTime,
+                    food.priceRange,
+                    food.phoneNumber,
+                    food.foodName
+                    FROM food, foodstalltype 
+                    WHERE foodStallType = 'Street Food'
                     AND food.postID = foodstalltype.postID";
                     $resultStreetFood = mysqli_query($connection, $sqlStreetFood);
                     if ($resultStreetFood){
@@ -298,11 +422,11 @@
                                                 </div>
                             
                                                 <div class='w3-display-bottomleft w3-display-hover w3-large w3-text-white'>
-                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>".$row['rating']." Rating</div>
+                                                    <div class='w3-padding w3-text-pink w3-animate-opacity'>Rating point: ".$row['rating']."</div>
                                                 </div>
                             
                                                 <div class='w3-display-middle w3-display-hover w3-large'>
-                                                    <a href='Rating.php'><button type='button' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
+                                                    <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-animate-opacity w3-btn w3-round w3-text-pink' style='background-color: #ffdbe1'>Show Rating</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -322,7 +446,7 @@
                                                     <i class='fa fa-cutlery'></i>
                                                 </p>
                                                 <hr>
-                                                <a href='Rating.php'><button class='w3-button w3-block w3-pink'>Rating</button></a>
+                                                <a href='./Rating.php?id=".$row['postID']."'><button type='submit' name = 'submit' class='w3-button w3-block w3-pink'>Rating</button></a>
                                             </div>
                                         </div>
                                     </div>
