@@ -7,15 +7,7 @@
 
 <div id="accountId">
     <?php
-        include_once "checkID.php";
-        $username = strval($_GET['user']);
-        $validUsername = checkingUser($connection, $username);
-        $getUsername = mysqli_fetch_array($validUsername);
-        $USER = $getUsername["username"];
-
-
-        // echo "Hello, ".$_SESSION['name']." | ";
-        echo "Hello, '$USER' | ";
+        echo "Hello, ".$_SESSION['name']." | ";
     ?>
     <a href="function/logout.php">
         <button>Logout</button>
