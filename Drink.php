@@ -297,7 +297,7 @@
                     drink.priceRange,
                     drink.phoneNumber,
                     drink.drinkName
-                    FROM drink, drinkstalltype, account 
+                    FROM drink, drinkstalltype 
                     WHERE drinkStallType = 'Takeaway'
                     AND drink.postID = drinkstalltype.postID";
                     $resultTakeAway = mysqli_query($connection, $sqlTakeAway);
