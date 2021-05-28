@@ -1,3 +1,17 @@
+<?php
+    include_once "lib/config.php";
+    include_once 'lib/DataProvider.php';
+    include_once "checkID.php";
+    $totalWeightComment = (int) NULL;
+    session_start();
+
+    global $db_host, $db_username, $db_password, $db_name;
+    $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
+    /* check connection */
+    if ($connection->connect_error) {      
+        die("Failed to connect: " . $connection->connect_error);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,7 +100,7 @@
         }
 
         .container_chat {
-            background-color: #ffd1dc;
+            background-color: rgba(255, 255, 255 , 0.7);
             padding: 10px;
             margin: 10px 0;
         }
@@ -103,7 +117,6 @@
             margin-right: 20px;
             border-radius: 50%;
         }
-
     </style>
 </head>
 
@@ -144,17 +157,7 @@
 
             <!--Nav bar-->
             <?php
-                include_once "lib/config.php";
-                include_once 'lib/DataProvider.php';
-                include_once "checkID.php";
-                $totalWeightComment = (int) NULL;
-
-                global $db_host, $db_username, $db_password, $db_name;
-                $connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-                /* check connection */
-                if ($connection->connect_error) {      
-                    die("Failed to connect: " . $connection->connect_error);
-                }
+                
                 
                 //Get the ID of the Stall
                 $id = intval($_GET['id']);
@@ -163,21 +166,18 @@
                 $ID = $getID["postID"];
 
                 //Get the username of the user
-                $username = strval($_GET['user']);
-                $validUsername = checkingUser($connection, $username);
-                $getUsername = mysqli_fetch_array($validUsername);
-                $USER = $getUsername["username"];
+                $USER = $_SESSION["username"];
 
                 echo"
                 <div class='w3-container'>
                     <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
                         <a href='index.php'>
                             <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
-                        <a href='./Food.php?user=".$USER."'>
+                        <a href='Food.php?username=".$USER."'>
                             <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
-                        <a href='./Drink.php?user=".$USER."'>
+                        <a href='Drink.php?username=".$USER."'>
                             <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
-                        <a href='./Query.php?user=".$USER."'>
+                        <a href='Query.php?username=".$USER."'>
                             <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
                     </div>
                 </div>
@@ -195,11 +195,6 @@
                 // Returning the result str1 + str2
                 return $str1;
             }
-
-            // function add_rating_point ($weight1, $weight2){
-            //     $weight1 = floatval($weight1 + $weight2);
-            //     return $weight1;
-            // }
             
             //add comment and word into database
             if(isset($_POST["txtComment"])){
@@ -210,7 +205,7 @@
 
                 $sqlComment = "INSERT into comment SET
                 commentID = NULL,
-                username = '$username',
+                username = '$USER',
                 content = '$content',
                 word = NULL,
                 point = NULL,
@@ -241,8 +236,16 @@
                         $index = $index + 1;
                     }
                 }
-                $weightComment = $weightTotal/$index;
-                
+                if ($index == 0){
+                    $point = mysqli_query($connection, "SELECT rating FROM post WHERE postID = '$ID'");
+                    while ($array_point = mysqli_fetch_array($point)){
+                        $weightComment = $array_point['rating'];
+                    }
+                }
+                else if ($index != 0){
+                    $weightComment = $weightTotal/$index;
+                }
+                                
                 $UpdatePoint = mysqli_query($connection,
                 "UPDATE comment 
                 SET point = '$weightComment'
@@ -366,6 +369,7 @@
                         }
                     }
                 }
+
                 //If drink, show detail of Drink
                 $sqlDrink = "SELECT * FROM drink, drinkstalltype 
                 WHERE drink.postID = '$ID'
@@ -453,21 +457,18 @@
                         }
                     }
                 }
-                else {
-                    echo"Urhh ... WUT?";
-                }
             }
         ?>
         <!-- Show comment -->
         <div class='container' >
             <div class = 'w3-container'>
                 <?php
-
                     $sqlComment = "SELECT comment.content, comment.time, account.name
                     FROM post, preferences, comment, account
                     WHERE preferences.postID = post.postID
                     AND post.postID = '$ID'
                     AND	preferences.username = account.username
+                    AND account.username = '$USER'
                     AND preferences.commentID = comment.commentID";
 
                     $resultComment = mysqli_query($connection, $sqlComment) or die(mysqli_connect_errno()."wooooooo");;

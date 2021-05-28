@@ -27,7 +27,7 @@
             {
                 $_SESSION["username"] = $row["username"];
                 $_SESSION["name"] = $row["name"];
-                DataProvider::ChangeURL("./Food.php?user=".$row["username"]."");
+                DataProvider::ChangeURL("./index.php?name=".$row['name']."");
             } 
             else 
             {

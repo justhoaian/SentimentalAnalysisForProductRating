@@ -95,25 +95,47 @@ p
                 die("Failed to connect: " . $connection->connect_error);
             }
 
-            $username = strval($_GET['user']);
-            $validUsername = checkingUser($connection, $username);
-            $getUsername = mysqli_fetch_array($validUsername);
-            $USER = $getUsername["username"];
+            if(isset($_GET["name"]) && isset($_SESSION["username"])){
+                
+                    echo"
+                         <script type='text/javascript'>
+                         alert('".$username."');
+                         </script>
+                     ";
+                
+                echo"
+                    <div class='w3-container'>
+                        <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                            <a href='index.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                            <a href='Food.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                            <a href='Drink.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
+                            <a href='Query.php?name=".$_SESSION["name"]."'>
+                                <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                        </div>
+                    </div>
+                ";
+            }
 
-            echo"
-            <div class='w3-container'>
-                <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
-                    <a href='index.php'>
-                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
-                    <a href='./Food.php?user=".$USER."'>
-                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
-                    <a href='./Drink.php?user=".$USER."'>
-                        <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
-                    <a href='./Query.php?user=".$USER."'>
-                        <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
-                </div>
-            </div>
-            ";
+            else{
+                $USER = "admin";
+                echo"
+                    <div class='w3-container'>
+                        <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
+                            <a href='index.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Home</button></a>
+                            <a href='Food.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Food</button></a>
+                            <a href='Drink.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-mobile w3-round-large'>Drinks</button></a>
+                            <a href='Query.php'>
+                                <button href='#' class='w3-bar-item w3-button w3-pink w3-mobile w3-right w3-round-large'>Query</button></a>
+                        </div>
+                    </div>
+                ";
+            }
         ?>
     </div>
     
@@ -134,7 +156,7 @@ p
 
 <div id="displayResultQuery">
     
-<table style="margin-left: auto, margin-right: auto, width:100%" >  
+<table style="margin-left: auto; margin-right: auto; width:100%" >  
     <tr>
             <?php
                 
