@@ -125,6 +125,8 @@
         <?php
                 if(isset($_SESSION["name"]) && isset($_SESSION["username"])){
                     if($_SESSION["username"] != 'admin'){
+                        $USER = $_SESSION["username"];
+
                         // echo"
                         //      <script type='text/javascript'>
                         //      alert('".$username."');
@@ -151,6 +153,7 @@
                         
 
                 else{
+                    $USER = "admin";
                     echo"
                     <div class='w3-container'>
                     <div class='w3-bar w3-pale-red w3-border w3-padding w3-round-large'>
